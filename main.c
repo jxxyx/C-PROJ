@@ -9,12 +9,12 @@
 
 
 // Defining Header for file
-#define HEADER "RFID Value,Location\n"
+#define HEADER "RFID Value, Location\n"
 
 // Creating a structure called baggage using typedef
 // For testing purposes, I will be only having 1 key value and 1 value only. Once fully tested we will implment more values under key
 typedef struct {
-    // creating variable called RFID_Value that has int property
+    // creating variable called RFID_Value that has char property
     // This is the Key
     char RFID_Value[100];
     // char property for the location value
@@ -31,11 +31,11 @@ int baggage_info_size = 0;
 void insertRecord(Baggage baggage) {
     // "a" means append, "w" means write
     // This line means that this will append the record into the BaggageInfoEzDB.txt
-    FILE *file = fopen("BaggageInfoEzDB.txt", "a");
+    FILE *file = fopen("BaggageInfoEzDB.txt", "w");
     // If file is present or empty it will print the following value into the DB
     if (file != NULL) {
         // In file, print key and value
-        fprintf(file, "%s,%s\n", baggage.RFID_Value, baggage.location);
+        fprintf(file, "%s, %s\n", baggage.RFID_Value, baggage.location);
         fclose(file);
     }
 
@@ -79,6 +79,7 @@ int main(void) {
             printf("Unable to open the file for appending.\n");
             return 1;
         }
+
     insertRecord(baggage1);
     insertRecord(baggage2);
     insertRecord(baggage3);
