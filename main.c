@@ -7,6 +7,10 @@
 // This is to allocate memory dynamically, convert data types, or manage program flow, among other tasks
 #include <stdlib.h>
 
+
+// Defining Header for file
+#define HEADER "RFID Value,Location\n"
+
 // Creating a structure called baggage using typedef
 // For testing purposes, I will be only having 1 key value and 1 value only. Once fully tested we will implment more values under key
 typedef struct {
@@ -58,14 +62,30 @@ void print_baggage_info() {
 }
 
 // Putting int main(void) to ensure that program is compatible with all c compilers
+// Currently this code is missing the append function
+// I have only hard coded in the DB, can work on integrating sam's append funtion in 
+// Yet to put in the string split for the input.
 int main(void) {
     Baggage baggage1 = {"1", "Singapore"};
     Baggage baggage2 = {"2", "Malaysia"};
     Baggage baggage3 = {"3", "Russia"};
 
+    // This is to have headers for the DB
+    FILE *file = fopen("BaggageInfoEzDB.txt", "a");
+        if (file != NULL) {
+            fprintf(file, HEADER);
+            fclose(file);
+        } else {
+            printf("Unable to open the file for appending.\n");
+            return 1;
+        }
     insertRecord(baggage1);
     insertRecord(baggage2);
     insertRecord(baggage3);
+
+
+     
+
 
     // Finding the baggage by RFID value
     
