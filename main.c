@@ -2,7 +2,9 @@
 #include <stdio.h>
 // This is console io, where it can be used for input output function
 #include <conio.h>
+// This is for string and memory manipulation
 #include <string.h>
+// This is to allocate memory dynamically, convert data types, or manage program flow, among other tasks
 #include <stdlib.h>
 
 // Creating a structure called baggage using typedef
