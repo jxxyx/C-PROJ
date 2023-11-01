@@ -21,6 +21,22 @@ typedef struct {
     Baggage *records; // This is a pointer to Baggage
 } BaggageTable;
 
+
+
+// Declare an array of initial key-value pairs
+Baggage initial_records[] = {
+    { "001", "SGP" },
+    { "002", "CHN" },
+    { "003", "IND" },
+    { "004", "RUS" },
+    { "005", "USA" },
+    { "006", "BRN" },
+    { "007", "AUS" },
+    { "008", "ENG" },
+    { "009", "KRN" },
+    { "010", "JPN" },
+}
+
 // Declares the function to open the database stored in the txt file.
 // Takes the file name as parameter and returns pointer to Baggage Table
 BaggageTable *open_database(const char *filename);
