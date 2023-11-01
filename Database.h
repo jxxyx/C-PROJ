@@ -35,7 +35,7 @@ Baggage initial_records[] = {
     { "008", "ENG" },
     { "009", "KRN" },
     { "010", "JPN" },
-}
+};
 
 // Declares the function to open the database stored in the txt file.
 // Takes the file name as parameter and returns pointer to Baggage Table
