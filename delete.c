@@ -23,12 +23,12 @@ void deleteRow(struct HashMap* hashMap, const char* idToDelete) {
             free(current->data.airport);
             free(current);
 
-            printf("Row with ID %s deleted from the database\n", idToDelete);
+            printf("The record of Key= %s is successfully deleted\n", idToDelete); // Deletion successful
             return; // Exit the function after deletion
         }
         previous = current;
         current = current->next;
     }
 
-    printf("Row with ID %s not found in the database\n", idToDelete);
+    printf("There is no record with Key= %s found in the database\n", idToDelete); // Deletion unsuccessful
 }
