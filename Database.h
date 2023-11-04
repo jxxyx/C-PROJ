@@ -1,50 +1,38 @@
-// This are the headers that are required for the database.h
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
-
 // This is a guard to prevent header file form being use too many times in the same compilation unit
 #ifndef DATABASE_H
 #define DATABASE_H
 
+// this is to include in the 
 
 // Defining structure to store key and value(s)
-typedef struct {
+typedef struct Baggage {
     char *RFIDValue; // This sets the RFID value as key
     char *Location; // This sets Location as the value
+    struct Baggage *next; // Pointer to the next entry in the hash table
 } Baggage;
 
+
+// This is the hashmap function
 typedef struct {
     int size; // Represents the max size of the DB
-    int count; // Show count of current entries present in the database
-    Baggage *records; // This is a pointer to Baggage
+    Baggage **table; //  This is a pointer to an array of Baggage pointers
 } BaggageTable;
 
 
+// Create a function to create and start a hashmap
+BaggageTable *createBaggageTable(int size);
 
-// Declare an array of initial key-value pairs
-Baggage initial_records[] = {
-    { "001", "SGP" },
-    { "002", "CHN" },
-    { "003", "IND" },
-    { "004", "RUS" },
-    { "005", "USA" },
-    { "006", "BRN" },
-    { "007", "AUS" },
-    { "008", "ENG" },
-    { "009", "KRN" },
-    { "010", "JPN" },
-};
+// Create a function to save the Database
+void saveBaggageTable(BaggageTable *table, const char *filename);
 
-// Declares the function to open the database stored in the txt file.
-// Takes the file name as parameter and returns pointer to Baggage Table
-BaggageTable *open_database(const char *filename);
-// using a void function to save database in to the datatable in a file
-void save_record(BaggageTable *table, const char *filename);
-// using a void function to insert records into the DB
-void insert_record(BaggageTable *table, const char *RFIDVale, const char *Location);
-// function to get all record in the database
-const char *retrieve_record(BaggageTable *table, const char *RFIDValue); // This code makes use of the key value to retrieve records in the database
+// Create a function to free the memeory allocation of the Database to limit its use else where
+void freeBaggageTable(BaggageTable *table);
+
+// Create a function to retrieve a value from the hashmap based on a key, which is the RFIDValue
+const char *retrieveBaggageTable(BaggageTable *table, const char *RFIDValue);
+
+// Function to insert a key-value pair into the hashmap
+void insertRecord(BaggageTable *table, const char *RFIDValue, const char *Location);
 
 // This statement is to close the guard, to ensure that the content within the guard is only runned once
 #endif
