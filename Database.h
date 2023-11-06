@@ -2,7 +2,6 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
-// this is to include in the 
 
 // Defining structure to store key and value(s)
 typedef struct Baggage {
