@@ -1,0 +1,9 @@
+#include "Database.c"
+#include "Database.h"
+#include "query.c"
+#include "query.h"
+#include "Insert.h"
+#include "Update.h"
+#include "fileio.h"
+#include "showall.h"
+#include <stdio.h>
