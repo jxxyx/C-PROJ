@@ -1,6 +1,9 @@
 {
   "files.associations": {
-    "conio.h": "c"
+    "*.ejs": "html",
+    "conio.h": "c",
+    "database.h": "c",
+    "stdio.h": "c"
   },
   "C_Cpp_Runner.msvcBatchPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvarsall.bat",
   "C_Cpp_Runner.cCompilerPath": "gcc",
@@ -59,5 +62,6 @@
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
-  "C_Cpp.errorSquiggles": "enabled"
+  "C_Cpp.errorSquiggles": "enabled",
+  "C_Cpp.dimInactiveRegions": false
 }
