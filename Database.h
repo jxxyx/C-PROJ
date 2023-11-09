@@ -21,6 +21,9 @@ typedef struct {
 // Create a function to create and start a hashmap
 BaggageTable *createBaggageTable(int size);
 
+// Calculate the hash for a given RFIDValue
+int calculateHash(const char* RFIDValue, int size);
+
 // Create a function to save the Database
 void saveBaggageTable(BaggageTable *table, const char *filename);
 

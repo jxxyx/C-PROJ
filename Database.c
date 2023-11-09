@@ -121,23 +121,23 @@ void initializeDatabase(BaggageTable *table) {
     insertRecord(table, "010", "JPN");
 }
 
-int main() {
-    BaggageTable *myDatabase = createBaggageTable(MAX_DATABASE_SIZE);
-    initializeDatabase(myDatabase);
+// int main() {
+//     BaggageTable *myDatabase = createBaggageTable(MAX_DATABASE_SIZE);
+//     initializeDatabase(myDatabase);
 
-    // Now, you can perform operations on the database
-    const char *location = retrieveBaggageTable(myDatabase, "001");
-    if (location != NULL) {
-        printf("Location for RFID 001: %s\n", location);
-    } else {
-        printf("RFID 001 not found in the database.\n");
-    }
+//     // Now, you can perform operations on the database
+//     const char *location = retrieveBaggageTable(myDatabase, "001");
+//     if (location != NULL) {
+//         printf("Location for RFID 001: %s\n", location);
+//     } else {
+//         printf("RFID 001 not found in the database.\n");
+//     }
 
-    // Save the database to a file
-    saveBaggageTable(myDatabase, "BaggageInfoEzDB.txt");
+//     // Save the database to a file
+//     saveBaggageTable(myDatabase, "BaggageInfoEzDB.txt");
 
-    // Free the memory when you're done
-    freeBaggageTable(myDatabase);
+//     // Free the memory when you're done
+//     freeBaggageTable(myDatabase);
 
-    return 0;
-}
+//     return 0;
+// }
