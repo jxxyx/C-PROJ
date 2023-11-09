@@ -5,7 +5,7 @@
 
 // Create a function to read DB txt file 
 
-void readFileContents() {
+void readBaggageTable() {
     FILE *file = fopen("BaggageInfoEzDB.txt", "r");
     if (file == NULL) {
         printf("Could not open file to read\n");

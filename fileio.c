@@ -19,4 +19,3 @@ void readBaggageTable() {
 
     fclose(file);
 }
-
