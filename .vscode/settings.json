@@ -3,7 +3,8 @@
     "*.ejs": "html",
     "conio.h": "c",
     "database.h": "c",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "fileio.h": "c"
   },
   "C_Cpp_Runner.msvcBatchPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvarsall.bat",
   "C_Cpp_Runner.cCompilerPath": "gcc",

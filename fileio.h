@@ -4,13 +4,19 @@
 //#include "Insert.h"
 //#include "Update.h"
 //#include "Delete.h"
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+#ifndef OPENFILE_H
+#define OPENFILE_H
+//OPEN FUNCTION
+void openFile();
+#endif
+
+//////////////////////////////////////////////////////////////////////////////////////////
 #ifndef DATABASE_H
 #define DATABASE_H
-
-
-//DATABASE FUNCTIONS
-// This is a guard to prevent header file form being use too many times in the same compilation unit
-
+//DATABASE FUNCTION
 // Defining structure to store key and value(s)
 typedef struct Baggage {
     char *RFIDValue; // This sets the RFID value as key
@@ -41,12 +47,22 @@ const char *retrieveBaggageTable(BaggageTable *table, const char *RFIDValue);
 // Function to insert a key-value pair into the hashmap
 void insertRecord(BaggageTable *table, const char *RFIDValue, const char *Location);
 
-// This statement is to close the guard, to ensure that the content within the guard is only runned once
 #endif
-
 //query and insert and update functions here
 
+//////////////////////////////////////////////////////////////////////////////////////////
+
 //SHOWALL FUNCTIONS
-// Function prototype
 void readBaggageTable();
 
+//////////////////////////////////////////////////////////////////////////////////////////
+#ifndef UPDATE_H
+#define UPDATE_H
+
+// UPDATE FUNCTIONS
+void updateRow(BaggageTable *table, const char* RFIDValue, const char* Location);
+#endif
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+// This statement is to close the guard, to ensure that the content within the guard is only runned once
