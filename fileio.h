@@ -2,8 +2,8 @@
 #include "showall.h"
 //#include "query.h"
 //#include "Insert.h"
-//#include "Update.h"
-//#include "Delete.h"
+#include "Update.h"
+#include "Delete.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -48,13 +48,29 @@ const char *retrieveBaggageTable(BaggageTable *table, const char *RFIDValue);
 void insertRecord(BaggageTable *table, const char *RFIDValue, const char *Location);
 
 #endif
-//query and insert and update functions here
+//query and insert functions here
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
+//DELETE FUNCTIONS
+#ifndef DELETE_H
+#define DELETE_H
+
+#include "Database.h" // Include the appropriate header for your HashMap data structure
+#include <string.h>
+
+// Function prototype to delete a row from the hash map-based database
+void deleteRow(BaggageTable *table, const char* RFIDValue, const char* Location);
+
+#endif // DELETE_H
+
+//////////////////////////////////////////////////////////////////////////////////////////
+#ifndef SHOWALL_H
+#define SHOWALL_H
 //SHOWALL FUNCTIONS
 void readBaggageTable();
 
+#endif
 //////////////////////////////////////////////////////////////////////////////////////////
 #ifndef UPDATE_H
 #define UPDATE_H
