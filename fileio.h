@@ -48,7 +48,21 @@ const char *retrieveBaggageTable(BaggageTable *table, const char *RFIDValue);
 void insertRecord(BaggageTable *table, const char *RFIDValue, const char *Location);
 
 #endif
+
 //query and insert functions here
+///////////////////////////////////////////////////////////////////////////////////////////
+
+//QUERY FUNCTIONS
+
+#ifndef QUERY_H_
+#define QUERY_H_
+
+#include "fileio.h"
+#include "Database.h"
+
+const char *retrieveBaggageTable(BaggageTable *table, const char *RFIDValue);
+
+#endif
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
