@@ -21,19 +21,19 @@ typedef struct {
 // Create a function to create and start a hashmap
 BaggageTable *createBaggageTable(int size);
 
-// Function prototype
+// Function prototype (FILEIO)
 const char *readBaggageTable(BaggageTable *table, const char *RFIDValue);
 
-// Create a function to save the Database
+// Create a function to save the Database (FILEIO)
 void saveBaggageTable(BaggageTable *table, const char *filename);
 
 // Create a function to free the memeory allocation of the Database to limit its use else where
 void freeBaggageTable(BaggageTable *table);
 
-// Create a function to retrieve a value from the hashmap based on a key, which is the RFIDValue
+// Create a function to retrieve a value from the hashmap based on a key, which is the RFIDValue (REMOVE AND SHIFT TO QUERY)
 const char *retrieveBaggageTable(BaggageTable *table, const char *RFIDValue);
 
-// Function to insert a key-value pair into the hashmap
+// Function to insert a key-value pair into the hashmap (REMOVE AND SHIFT TO INSERT)
 void insertRecord(BaggageTable *table, const char *RFIDValue, const char *Location);
 
 // This statement is to close the guard, to ensure that the content within the guard is only runned once
