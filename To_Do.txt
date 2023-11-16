@@ -1,0 +1,41 @@
+1. main.c, needs to be up by next meeting for the integration of the codes
+2. Refine Database.c and Database.h
+3. Can look to refine the hashmap to become list_Hash_Map, which is a structured 
+
+
+
+// FileIO.h
+#include "query.h'
+#include "insert.h'
+
+const char *retrieveBaggageTable(BaggageTable *table, const char *RFIDValue);
+
+BaggageTable *createBaggageTable(int size);
+
+// FileIO.cha
+#include 'FiloIO.h'
+
+
+const char *retrieveBaggageTable(BaggageTable *table, const char *RFIDValue) {
+
+    int hash = calculateHash(RFIDValue, table->size);
+    Baggage *current = table->table[hash];
+
+    while (current != NULL) {
+
+        if (strcmp(current->RFIDValue, RFIDValue) == 0) {
+            printf("Record found...\n");
+            printf("%s : %s\n", RFIDValue ,current->Location);
+            return current->Location;
+        }
+
+        current = current->next;
+    }
+    if (current == NULL){
+        printf("Record for %s not found...\n", RFIDValue);
+    }
+
+    return NULL;
+
+}
+
