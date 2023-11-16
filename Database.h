@@ -21,6 +21,9 @@ typedef struct {
 // Create a function to create and start a hashmap
 BaggageTable *createBaggageTable(int size);
 
+// Function prototype
+const char *readBaggageTable(BaggageTable *table, const char *RFIDValue);
+
 // Create a function to save the Database
 void saveBaggageTable(BaggageTable *table, const char *filename);
 

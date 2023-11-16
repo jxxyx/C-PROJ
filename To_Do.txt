@@ -1,3 +1,15 @@
 1. main.c, needs to be up by next meeting for the integration of the codes
 2. Refine Database.c and Database.h
 3. Can look to refine the hashmap to become list_Hash_Map, which is a structured 
+
+TO DO:
+Create a main function to ensure that there is a showall function done up, then run the codes to ensure that a type r file is created
+Read and display all of the dataset within the Database
+Ensure that the query function works 
+
+
+Right now the ambiguity comes from the fact that all of the function does not read off of the Database that has  already been created
+I will need to modify the codes to allow it to read off of my database.txt  file.
+
+
+Modify the database.c file to initialize a empty database.txt file.
