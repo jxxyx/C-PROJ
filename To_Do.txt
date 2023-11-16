@@ -3,7 +3,7 @@
 3. Can look to refine the hashmap to become list_Hash_Map, which is a structured 
 
 TO DO:
-1. Modify the database.c file to initialize a empty database.txt file.
+1. Modify the database.c file to initialize a empty database.txt file. (done)
 2. Have the fileIO.h and fileIO.c to open and save the BaggageEzDB.txt
 3. Create a menu to display declaration and show the open and save command
     - Users will be prompted to input accordingly.
