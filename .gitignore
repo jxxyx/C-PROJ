@@ -1,0 +1,14 @@
+# Ignore Visual Studio Code settings
+.vscode/
+
+# Ignore build files
+*.o
+*.exe
+*.out
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore Windows system files
+Thumbs.db
+Desktop.ini

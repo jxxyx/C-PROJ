@@ -86,11 +86,11 @@ int main() {
     BaggageTable *myDatabase = createBaggageTable(MAX_DATABASE_SIZE);
     initializeDatabase(myDatabase);
 
-    // Save the database to a file
-    saveBaggageTable(myDatabase, "BaggageInfoEzDB.txt");
+//     // Save the database to a file
+//     saveBaggageTable(myDatabase, "BaggageInfoEzDB.txt");
 
     // Free the memory when you're done
    freeBaggageTable(myDatabase);
 
-    return 0;
-}
+//     return 0;
+// }
