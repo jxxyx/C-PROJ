@@ -24,9 +24,6 @@ BaggageTable *createBaggageTable(int size);
 // Calculate the hash for a given RFIDValue
 int calculateHash(const char* RFIDValue, int size);
 
-// Create a function to save the Database (FILEIO)
-// void saveBaggageTable(BaggageTable *table, const char *filename);
-
 // Create a function to free the memeory allocation of the Database to limit its use else where
 void freeBaggageTable(BaggageTable *table);
 
