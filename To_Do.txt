@@ -3,6 +3,20 @@
 3. Can look to refine the hashmap to become list_Hash_Map, which is a structured 
 
 TO DO:
+1. Modify the database.c file to initialize a empty database.txt file.
+2. Have the fileIO.h and fileIO.c to open and save the BaggageEzDB.txt
+3. Create a menu to display declaration and show the open and save command
+    - Users will be prompted to input accordingly.
+    - Open leads to open file and allocate memeory and closing it afterwards
+        > This will lead users to select the 5 functions
+        > Users to choose what function to use (if...else)
+    - Save file(Make the file rewrite over previous data and save the newest data)
+4. Unit Testing(Saturday)
+5. Error validation (Sunday)
+
+
+
+
 Create a main function to ensure that there is a showall function done up, then run the codes to ensure that a type r file is created
 Read and display all of the dataset within the Database
 Ensure that the query function works 
@@ -12,4 +26,3 @@ Right now the ambiguity comes from the fact that all of the function does not re
 I will need to modify the codes to allow it to read off of my database.txt  file.
 
 
-Modify the database.c file to initialize a empty database.txt file.
