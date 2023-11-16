@@ -1,6 +1,7 @@
 #include "fileio.h"
 #include <stdio.h>
 #include <string.h>
+#include "Database.h"
 
 const char *retrieveBaggageTable(BaggageTable *table, const char *RFIDValue) {
     int hash = calculateHash(RFIDValue, table->size);

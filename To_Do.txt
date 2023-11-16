@@ -2,40 +2,27 @@
 2. Refine Database.c and Database.h
 3. Can look to refine the hashmap to become list_Hash_Map, which is a structured 
 
+TO DO:
+1. Modify the database.c file to initialize a empty database.txt file. (done)
+2. Have the fileIO.h and fileIO.c to open and save the BaggageEzDB.txt
+3. Create a menu to display declaration and show the open and save command
+    - Users will be prompted to input accordingly.
+    - Open leads to open file and allocate memeory and closing it afterwards
+        > This will lead users to select the 5 functions
+        > Users to choose what function to use (if...else)
+    - Save file(Make the file rewrite over previous data and save the newest data)
+4. Unit Testing(Saturday)
+5. Error validation (Sunday)
 
 
-// FileIO.h
-#include "query.h'
-#include "insert.h'
-
-const char *retrieveBaggageTable(BaggageTable *table, const char *RFIDValue);
-
-BaggageTable *createBaggageTable(int size);
-
-// FileIO.cha
-#include 'FiloIO.h'
 
 
-const char *retrieveBaggageTable(BaggageTable *table, const char *RFIDValue) {
+Create a main function to ensure that there is a showall function done up, then run the codes to ensure that a type r file is created
+Read and display all of the dataset within the Database
+Ensure that the query function works 
 
-    int hash = calculateHash(RFIDValue, table->size);
-    Baggage *current = table->table[hash];
 
-    while (current != NULL) {
+Right now the ambiguity comes from the fact that all of the function does not read off of the Database that has  already been created
+I will need to modify the codes to allow it to read off of my database.txt  file.
 
-        if (strcmp(current->RFIDValue, RFIDValue) == 0) {
-            printf("Record found...\n");
-            printf("%s : %s\n", RFIDValue ,current->Location);
-            return current->Location;
-        }
-
-        current = current->next;
-    }
-    if (current == NULL){
-        printf("Record for %s not found...\n", RFIDValue);
-    }
-
-    return NULL;
-
-}
 

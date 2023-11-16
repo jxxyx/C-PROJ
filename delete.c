@@ -36,29 +36,3 @@ void deleteRow(BaggageTable *table, const char* RFIDValue, const char* Location)
 }
 
 // Create a function to test the deleteRow function, remove this function when submitting the code
-void testDelete() {
-    // Create a new hash map-based database
-    BaggageTable *table = createBaggageTable(10);
-
-    // Add some Baggage instances to the table
-    insertRecord(table, "020", "SIN");  // Assuming you have a function to add a row
-    insertRecord(table, "021", "ICN");
-
-    // Delete the row from the database
-    deleteRow(table, "020", "SIN");
-
-    // Try to find the deleted record
-    const char *record = retrieveBaggageTable(table, "020");
-
-    // Check if the row was successfully deleted
-    if (record == NULL) {
-        printf("Test successful: Row has been deleted.\n");
-    } else {
-        printf("Test failed: Row was not deleted.\n");
-    }
-}
-
-int main() {
-    testDelete();
-    return 0;
-}
