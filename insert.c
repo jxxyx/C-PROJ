@@ -22,30 +22,3 @@ void insertRecord(BaggageTable *table, const char *RFIDValue, const char *Locati
     }
 }
 
-void testInsertRecord(){
-    BaggageTable *table = createBaggageTable(10);
-
-    insertRecord(table, "020","SIN");
-    insertRecord(table, "021","ICN");
-
-    int hash = calculateHash("021", table->size);
-    Baggage *current = table->table[hash];
-
-    while (current != NULL) {
-        if (strcmp(current->RFIDValue, "021") == 0) {
-            printf("The record with RFID 021 is found in the database.\n");
-            break;
-        }
-        else{
-            printf("The record with RFID 021 is not found in the database.\n");
-            break;
-        }
-        current = current->next;
-    }
-}
-
-int main()
-{
-    testInsertRecord();
-    return 0;
-}
