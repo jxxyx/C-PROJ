@@ -22,5 +22,3 @@ void updateRow(BaggageTable *table, const char* RFIDValue, const char* Location)
     printf("Row with ID %s not found in the database\n", RFIDValue);
 }  
 
-// Comment out the testUpdateRow function and main below if you do not want a test run
-// Function to test update feature, updating a row in the hash map-based database
