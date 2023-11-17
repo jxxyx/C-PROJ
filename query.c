@@ -3,7 +3,7 @@
 #include <string.h>
 #include "Database.h"
 
-const char *retrieveBaggageTable(BaggageTable *table, const char *RFIDValue) {
+const char *queryTag(BaggageTable *table, const char *RFIDValue) {
     int hash = calculateHash(RFIDValue, table->size);
     Baggage *current = table->table[hash];
 

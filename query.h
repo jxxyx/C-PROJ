@@ -4,6 +4,6 @@
 #include "fileio.h"
 #include "Database.h"
 
-const char *retrieveBaggageTable(BaggageTable *table, const char *RFIDValue);
+const char *queryTag(BaggageTable *table, const char *RFIDValue);
 
 #endif
