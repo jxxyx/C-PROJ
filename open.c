@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include <stddef.h>
+#include <unistd.h>
 #include "Database.h"
 #include "open.h"
-#ifdef _WIN32
-#include <io.h>
-#else
-#include <unistd.h>
-#endif
 
+
+// // Create a function to read DB txt file 
 
 void openFile() {
     char line[256];
@@ -23,16 +21,7 @@ void openFile() {
             printf("%s", line);
         }
         fclose(file);
-
-        // Reopen the file in append mode
-        file = fopen("BaggageInfoEzDB.txt", "a");
-        if (file == NULL) {
-            printf("Could not open file\n");
-            return;
-        }
-        // You can append to the file here using fprintf or fputc
-        fclose(file);
-
+    
     } else {
         FILE *file = fopen("BaggageInfoEzDB.txt", "w");
         if (file == NULL) {
@@ -49,3 +38,4 @@ void openFile() {
 //     openFile();
 //     return 0;
 // }
+
