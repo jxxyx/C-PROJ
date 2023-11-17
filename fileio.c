@@ -24,8 +24,18 @@ void openFile() {
             printf("%s", line);
         }
         fclose(file);
+    
+    } else {
+        FILE *file = fopen("BaggageInfoEzDB.txt", "w");
+        if (file == NULL) {
+            printf("Could not create file\n");
+            return;
+        }
+        fclose(file);
+        printf("No saved database found, creating new .txt database\n");
+        printf("Database created successfully\n");
     }
-}    
+}
 
 // Create a function to save the Database into a txt file 
 void saveBaggageTable(BaggageTable *table, const char *filename) {
