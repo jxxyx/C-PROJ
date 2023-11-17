@@ -2,6 +2,7 @@
 #include <stddef.h>
 #include "Database.h"
 #include "update.h"
+#include "fileio.h"
 
 // Function to update a row in the hash map-based database
 void updateRow(BaggageTable *table, const char* RFIDValue, const char* Location) {
@@ -14,6 +15,7 @@ void updateRow(BaggageTable *table, const char* RFIDValue, const char* Location)
             // Update the airport code if the ID matches
             strncpy(current->Location, Location, 4);
             printf("Row with ID %s updated with new airport code %s\n", RFIDValue, Location);
+            writeTableToFile(table, "BaggageInfoEZDB.txt");
             return;  // Exit the function after updating
         }
         current = current-> next;
