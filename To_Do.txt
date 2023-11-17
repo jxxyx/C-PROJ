@@ -45,5 +45,12 @@ Team members:
 6. Tamo Cholo Rafael Tandoc
 Date: 23/11/2023 XXXXHRS
 
+Currently Done:
+1. Test on Insert, Update, delete function (scrappy codes)
+
+TO DO AS OF 18/10/2023:
+2. Come up with user input.h and.c to call for user input
+3. Integrate with test done by julian and then merge with menu 1 and 2 from yusri and Cholo
+4. FINAL INTEGRATION TEST
 
 
