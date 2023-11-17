@@ -3,8 +3,8 @@
 
 #include "fileio.h"
 
-void menu1();
+int menu1();
 
-void menu2();
+int menu2();
 
 #endif
