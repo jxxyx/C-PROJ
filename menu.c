@@ -92,8 +92,31 @@ int menu1 (){
 }
 
 int menu2(){
-    BaggageTable *myDatabase = createBaggageTable(200); // Please change this!
-    initializeDatabase(myDatabase);
+BaggageTable *myDatabase = createBaggageTable(200); // Please change this!
+
+//open the file, then store the data into myDatabase
+FILE *file = fopen("BaggageInfoEzDB.txt", "r");
+if (file == NULL) {
+    printf("Failed to open the file.\n");
+    return;
+}
+
+char RFIDValue[256], Location[256];
+while (fscanf(file, "%s %s", RFIDValue, Location) != EOF) {
+    // Calculate the hash of the RFIDValue
+    int index = calculateHash(RFIDValue, myDatabase->size);
+
+    // Create a new Baggage node
+    Baggage *newBaggage = malloc(sizeof(Baggage));
+    newBaggage->RFIDValue = strdup(RFIDValue);
+    newBaggage->Location = strdup(Location);
+
+    // Insert the new node at the beginning of the linked list at the hashed index
+    newBaggage->next = myDatabase->table[index];
+    myDatabase->table[index] = newBaggage;
+}
+
+fclose(file);
 
     printf("  ______     ______     _____     ______               \n");
     printf(" /\\  ___\\   /\\___  \\   /\\  __-.  /\\  == \\       \n");
@@ -141,7 +164,14 @@ int menu2(){
 
             //if token is 'SHOW', display the database
             else if (strcmp(token, ShowWord) == 0) {
-                printf("Showing database...\n");
+                //print the contents of myDatabase
+                for (int i = 0; i < myDatabase->size; i++) {
+                    Baggage *baggage = myDatabase->table[i];
+                    while (baggage != NULL) {
+                        printf("RFIDValue: %s, Location: %s\n", baggage->RFIDValue, baggage->Location);
+                        baggage = baggage->next;
+                    }
+                }
             }
 
             //if token is 'INSERT', insert a new baggage into the database
@@ -151,7 +181,9 @@ int menu2(){
 
             //if token is 'QUERY', query the database
             else if (strcmp(token, QueryWord) == 0) {
-                printf("Querying database...\n");
+                //get next token
+                token = strtok(NULL, " ");
+                queryTag(myDatabase, token);
             }
 
             //if token is 'UPDATE', update the database
