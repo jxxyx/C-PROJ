@@ -5,7 +5,7 @@
 #include "Database.h"
 
 // Function to delete a row from the hash map-based database
-void deleteRow(BaggageTable *table, const char* RFIDValue, const char* Location) {
+void deleteRow(BaggageTable *table, const char* RFIDValue) {
     int hash = calculateHash(RFIDValue, table->size); // Calculate the index based on the ID
     Baggage *current = table->table[hash];
     Baggage *previous = NULL;
@@ -22,7 +22,6 @@ void deleteRow(BaggageTable *table, const char* RFIDValue, const char* Location)
 
             // Free memory associated with the node and the airport code
             free(current->RFIDValue);
-            free(current->Location);
             free(current);
 
             printf("The record of Key= %s is successfully deleted\n", RFIDValue); // Deletion successful

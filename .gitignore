@@ -5,6 +5,7 @@
 *.o
 *.exe
 *.out
+*.dSYM
 
 # Ignore macOS system files
 .DS_Store
@@ -12,3 +13,6 @@
 # Ignore Windows system files
 Thumbs.db
 Desktop.ini
+
+# Ignore test files
+test_update

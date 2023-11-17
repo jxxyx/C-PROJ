@@ -10,4 +10,11 @@ void saveBaggageTable(BaggageTable *table, const char *filename);
 //OPENFUNCTION
 void openFile();
 
+//WRITETABLETOFILE
+void writeTableToFile(BaggageTable *table, const char* filename);
+
+//READTABLEFROMFILE
+void readTableFromFile(BaggageTable *table, const char* filename);
+
+//CLOSEGUARD
 #endif

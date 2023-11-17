@@ -5,6 +5,6 @@
 #include <string.h>
 
 // Function prototype to delete a row from the hash map-based database
-void deleteRow(BaggageTable *table, const char* RFIDValue, const char* Location);
+void deleteRow(BaggageTable *table, const char* RFIDValue);
 
 #endif // DELETE_H
