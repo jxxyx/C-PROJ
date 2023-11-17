@@ -25,4 +25,25 @@ Ensure that the query function works
 Right now the ambiguity comes from the fact that all of the function does not read off of the Database that has  already been created
 I will need to modify the codes to allow it to read off of my database.txt  file.
 
+Declaration
+SIT’s policy on copying does not allow the students to copy source code as well as assessment solutions
+from another person or other places. It is the students’ responsibility to guarantee that their assessment
+solutions are their own work. Meanwhile, the students must also ensure that their work is not accessible
+by others. Where such plagiarism is detected, both of the assessments involved will receive ZERO mark.
+We hereby declare that:
+• We fully understand and agree to the abovementioned plagiarism policy.
+• We did not copy any code from others or from other places.
+• We did not share our codes with others or upload to any other places for public access.
+• We agree that our project will receive Zero mark if there is any plagiarism detected.
+Declared by: Group Name: (please insert your group name)
+Team members:
+1. Mock Jun Yu
+2. Ng Shu Yi
+3. Julian Teo
+4. Soon Jun Hong, Samuel
+5. Muhammad Yusri Bin Abdullah 
+6. Tamo Cholo Rafael Tandoc
+Date: 23/11/2023 XXXXHRS
+
+
 
