@@ -27,7 +27,6 @@ void insertRecord(BaggageTable *table, const char *RFIDValue, const char *Locati
     newRecord->next = table->table[hash];
     table->table[hash] = newRecord;
 
-    printf("A new record of ID %s and new Airport Code %s are successfully inserted.\n", RFIDValue, Location);
     writeTableToFile(table, "BaggageInfoEzDB.txt");
     
     if (strcmp(RFIDValue, "RFIDValue") == 0) {

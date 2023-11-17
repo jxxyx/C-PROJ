@@ -17,3 +17,4 @@ Desktop.ini
 # Ignore test files
 test_update
 query
+test_showall
