@@ -5,6 +5,10 @@
 #include "Database.c"
 #include "Database.h"
 #include "fileio.h"
+#include "insert.c"
+#include "showall.c"
+#include "update.c"
+#include "delete.c"
 #include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -129,7 +133,7 @@ fclose(file);
     printf("   \\/_____/   \\/_____/   \\/____/   \\/_____/        \n");
     printf("                                                       \n");
 
-    char infoWord[2] = {'?', '\0'};
+    char quePasa[2] = {'?', '\0'};
     char ShowWord[9] = {'S', 'H', 'O', 'W','\0'};
     char InsertWord[9] = {'I', 'N', 'S', 'E', 'R', 'T','\0'};
     char QueryWord[6] = {'Q', 'U', 'E', 'R', 'Y', '\0'};
@@ -143,6 +147,9 @@ fclose(file);
     char* tempRFID;
     char* tempLocation;
 
+    char* command;
+    char* lastWord;
+
     printf("What would you like to do?\n");
     printf("Type '?' for more information.\n");
 
@@ -154,79 +161,147 @@ fclose(file);
         char *token = strtok(input, " ");;//Get the first token
 
         if (token != NULL) {    // Check if token is NULL before using it
-            //if token is '?' display possible commands
-            if (strcmp(token, infoWord) == 0) {
-                printf("Possible commands:\n");
-                printf("1. SHOW\n");
-                printf("2. INSERT\n");
-                printf("3. QUERY\n");
-                printf("4. UPDATE\n");
-                printf("5. DELETE\n");
-                printf("6. OPEN\n");
-                printf("7. SAVE\n");
-                printf("8. EXIT\n");
-                printf("9. BACK\n");
+            // Empty Command Input
+            if(token == NULL){
+                printf("Syntax Error: Please enter a command!\n");
+            }
+            // ?
+            else if(strcmp(token, quePasa) == 0){
+                menu2();
             }
 
-            //if token is 'SHOW', display the database
-            else if (strcmp(token, ShowWord) == 0) {
-                //print the contents of myDatabase
-                for (int i = 0; i < myDatabase->size; i++) {
-                    Baggage *baggage = myDatabase->table[i];
-                    while (baggage != NULL) {
-                        printf("RFIDValue: %s, Location: %s\n", baggage->RFIDValue, baggage->Location);
-                        baggage = baggage->next;
-                    }
+            // INSERT
+            else if(strcmp(token, InsertWord) == 0) {
+                token = strtok(NULL, " ");
+                tempRFID = token;
+                token = strtok(NULL, " ");
+                tempLocation = token;
+                token = strtok(NULL, " ");
+                lastWord = token;
+
+                if(validateRFID(tempRFID) == 0 && validateAirportName(tempLocation) == 0 && lastWord == NULL){
+                    insertRecord(myDatabase, tempRFID, tempLocation);
+                }
+                else if(validateRFID(tempRFID) != 0)    {
+                    printf("\n-----------------------------\n");
+                    printf("Syntax Error: ");
+                    handleError(validateRFID(tempRFID));
+                    printf("-----------------------------\n");
+                }
+                else if(validateAirportName(tempLocation) != 0)    {
+                    printf("\n-----------------------------\n");
+                    printf("Syntax Error: ");
+                    handleError(validateAirportName(tempLocation));
+                    printf("-----------------------------\n");
+                }
+                else{
+                    printf("\n-----------------------------\n");
+                    printf("Syntax Error: Additional Input Detected!\n");
+                    printf("-----------------------------\n");
                 }
             }
 
-            //if token is 'INSERT', insert a new baggage into the database
-            else if (strcmp(token, InsertWord) == 0) {
-                printf("Inserting new baggage...\n");
-            }
-
-            //if token is 'QUERY', query the database
-            else if (strcmp(token, QueryWord) == 0) {
-                //get next token
+            // SHOW ALL
+            else if(strcmp(token, ShowWord) == 0){
                 token = strtok(NULL, " ");
-                queryTag(myDatabase, token);
+                char* secondWord = token;
+                token = strtok(NULL, " ");
+                lastWord = token;
+
+                if (strcmp(secondWord, "ALL") == 1){
+                    printf("\n-----------------------------\n");
+                    printf("Syntax Error: Did you mean SHOW ALL?\n");
+                    printf("-----------------------------\n");
+                }
+                else if(strcmp(secondWord, "ALL") == 0 && lastWord == NULL){
+                    readBaggageTable(myDatabase);
+                }
+                else{
+                    printf("\n-----------------------------\n");
+                    printf("Syntax Error: Additional Input Detected!\n");
+                    printf("-----------------------------\n");
+                }
             }
 
-            //if token is 'UPDATE', update the database
-            else if (strcmp(token, UpdateWord) == 0) {
-                printf("Updating database...\n");
+            // QUERY
+            else if (strcmp(token, QueryWord) == 0){
+                token = strtok(NULL, " ");
+                tempRFID = token;
+                token = strtok(NULL, " ");
+                lastWord = token;
+
+                if(validateRFID(tempRFID) == 0 && lastWord == NULL){
+                    queryTag(myDatabase, tempRFID);
+                }
+                else if (validateRFID(tempRFID) != 0){
+                    printf("\n-----------------------------\n");
+                    printf("Syntax Error: ");
+                    handleError(validateRFID(tempRFID));
+                    printf("-----------------------------\n");
+                }
+                else{
+                    printf("\n-----------------------------\n");
+                    printf("Syntax Error: Additional Input Detected!\n");
+                    printf("-----------------------------\n");
+                }
             }
 
-            //if token is 'DELETE', delete a baggage from the database
-            else if (strcmp(token, DeleteWord) == 0) {
-                printf("Deleting baggage...\n");
+            // UPDATE
+            else if(strcmp(token, UpdateWord) == 0) {
+                token = strtok(NULL, " ");
+                tempRFID = token;
+                token = strtok(NULL, " ");
+                tempLocation = token;
+                token = strtok(NULL, " ");
+                lastWord = token;
+
+                if(validateRFID(tempRFID) == 0 && validateAirportName(tempLocation) == 0 && lastWord == NULL){
+                    updateRow(myDatabase, tempRFID, tempLocation);
+                }
+                else if(validateRFID(tempRFID) != 0)    {
+                    printf("\n-----------------------------\n");
+                    printf("Syntax Error: ");
+                    handleError(validateRFID(tempRFID));
+                    printf("-----------------------------\n");
+                }
+                else if(validateAirportName(tempLocation) != 0)    {
+                    printf("\n-----------------------------\n");
+                    printf("Syntax Error: ");
+                    handleError(validateAirportName(tempLocation));
+                    printf("-----------------------------\n");
+                }
+                else{
+                    printf("\n-----------------------------\n");
+                    printf("Syntax Error: Additional Input Detected!\n");
+                    printf("-----------------------------\n");
+                }
             }
 
-            //if token is 'OPEN', open the file
-            else if (strcmp(token, OpenWord) == 0) {
-                printf("Opening file...\n");
-            }
+            // DELETE
+            else if(strcmp(token, DeleteWord) == 0){
+                token = strtok(NULL, " ");
+                tempRFID = token;
+                token = strtok(NULL, " ");
+                lastWord = token;
 
-            //if token is 'SAVE', save the file
-            else if (strcmp(token, SaveWord) == 0) {
-                printf("Saving file...\n");
+                if(validateRFID(tempRFID) == 0 && lastWord == NULL){
+                    deleteRow(myDatabase, tempRFID, tempLocation);
+                }
+                else if (validateRFID(tempRFID) != 0){
+                    printf("\n-----------------------------\n");
+                    printf("Syntax Error: ");
+                    handleError(validateRFID(tempRFID));
+                    printf("-----------------------------\n");
+                }
+                else{
+                    printf("\n-----------------------------\n");
+                    printf("Syntax Error: Additional Input Detected!\n");
+                    printf("-----------------------------\n");
+                }
             }
-
-            //if token is 'EXIT', exit the program
-            else if (strcmp(token, "EXIT") == 0) {
-                printf("Exiting program\n");
-                freeBaggageTable(myDatabase);
-                return 0;
-                break;
-            }
-
-            //if token is 'BACK', go back to menu1
-            else if (strcmp(token, backWord) == 0) {
-                printf("Going back to menu1...\n");
-                freeBaggageTable(myDatabase);
-                system("cls");
-                menu1();
-                break;
+            // Unrecognized Input
+            else{
+                printf("Syntax Error: Unrecognized command %s ...\n", input);
             }
         }
     }while(1);
