@@ -9,6 +9,8 @@
 #include "showall.c"
 #include "update.c"
 #include "delete.c"
+//
+
 #include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,7 +20,7 @@
 int menu1 (){
     printf("**********************************************************************************************************************\n");
     printf("*                                              Declaration                                                           *\n");
-    printf("*  SIT's policy on copying does not allow the students to copy source code as well as assessment solutions           *\n");
+    printf("*  SIT\'s policy on copying does not allow the students to copy source code as well as assessment solutions           *\n");
     printf("*  from another person or other places. It is the students' responsibility to guarantee that their assessment        *\n");
     printf("*  solutions are their own work. Meanwhile, the students must also ensure that their work is not accessible          *\n");
     printf("*  by others. Where such plagiarism is detected, both of the assessments involved will receive ZERO mark.            *\n");
@@ -40,7 +42,7 @@ int menu1 (){
     printf("*  Date: (please insert the date when you submit your group project).                                                *\n");
     printf("*                                                                                                                    *\n");
     printf("**********************************************************************************************************************\n");
-    
+
     //user input as a string
     char input[100];
     printf("What would you like to do?\n");
@@ -59,10 +61,10 @@ int menu1 (){
 
         //if user input 'OPEN', open the file, clear the terminal, then go to menu2
         else if (input[0] == 'O' && input[1] == 'P' && input[2] == 'E' && input[3] == 'N') {
-            
+
             // Animation to show that the file is being opened
             for(int i = 0; i < 3; i++) {
-            printf("\rInitializing Database"); 
+            printf("\rInitializing Database");
             for(int j = 0; j <= i; j++) {
                 printf(".");
                 fflush(stdout); // Flushes the output buffer of the stream
@@ -80,7 +82,7 @@ int menu1 (){
             //go to menu2
             menu2();
             break;
-        } 
+        }
 
         //if user input 'EXIT', exit the program
         else if (input[0] == 'E' && input[1] == 'X' && input[2] == 'I' && input[3] == 'T') {
@@ -215,7 +217,13 @@ fclose(file);
                 token = strtok(NULL, " ");
                 lastWord = token;
 
-                if (strcmp(secondWord, "ALL") == 1){
+                if (secondWord == NULL){
+                    printf("\n-----------------------------\n");
+                    printf("Syntax Error: Did you mean SHOW ALL?\n");
+                    printf("-----------------------------\n");
+                }
+
+                else if (strcmp(secondWord, "ALL") == 1){
                     printf("\n-----------------------------\n");
                     printf("Syntax Error: Did you mean SHOW ALL?\n");
                     printf("-----------------------------\n");
