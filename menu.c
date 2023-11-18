@@ -14,16 +14,16 @@
 int menu1 (){
     printf("**********************************************************************************************************************\n");
     printf("*                                              Declaration                                                           *\n");
-    printf("*  SIT’s policy on copying does not allow the students to copy source code as well as assessment solutions           *\n");
-    printf("*  from another person or other places. It is the students’ responsibility to guarantee that their assessment        *\n");
+    printf("*  SIT's policy on copying does not allow the students to copy source code as well as assessment solutions           *\n");
+    printf("*  from another person or other places. It is the students' responsibility to guarantee that their assessment        *\n");
     printf("*  solutions are their own work. Meanwhile, the students must also ensure that their work is not accessible          *\n");
     printf("*  by others. Where such plagiarism is detected, both of the assessments involved will receive ZERO mark.            *\n");
     printf("*                                                                                                                    *\n");
     printf("*  We hereby declare that:                                                                                           *\n");
-    printf("*   •    We fully understand and agree to the abovementioned plagiarism policy.                                      *\n");
-    printf("*   •   We did not copy any code from others or from other places.                                                   *\n");
-    printf("*   •   We did not share our codes with others or upload to any other places for public access.                      *\n");
-    printf("*   •   We agree that our project will receive Zero mark if there is any plagiarism detected.                        *\n");
+    printf("*   -   We fully understand and agree to the abovementioned plagiarism policy.                                       *\n");
+    printf("*   -   We did not copy any code from others or from other places.                                                   *\n");
+    printf("*   -   We did not share our codes with others or upload to any other places for public access.                      *\n");
+    printf("*   -   We agree that our project will receive Zero mark if there is any plagiarism detected.                        *\n");
     printf("*                                                                                                                    *\n");
     printf("*  Declared by: Group Name: (please insert your group name)                                                          *\n");
     printf("*  Team members:                                                                                                     *\n");
@@ -66,6 +66,9 @@ int menu1 (){
             sleep(1);
             }
             printf("\n"); // Move to the next line after the animation
+
+            //clear the console
+            system("cls");
 
             //open the file using openFile() function from open.c
             // openFile();
@@ -134,6 +137,7 @@ fclose(file);
 
     char OpenWord[5] = {'O', 'P', 'E', 'N', '\0'};
     char SaveWord[5] = {'S', 'A', 'V', 'E', '\0'};
+    char backWord[5] = {'B', 'A', 'C', 'K', '\0'};
 
     char* tempRFID;
     char* tempLocation;
@@ -210,6 +214,14 @@ fclose(file);
             else if (strcmp(token, "EXIT") == 0) {
                 printf("Exiting program\n");
                 return 0;
+                break;
+            }
+
+            //if token is 'BACK', go back to menu1
+            else if (strcmp(token, backWord) == 0) {
+                printf("Going back to menu1...\n");
+                system("cls");
+                menu1();
                 break;
             }
         }
