@@ -297,7 +297,7 @@ fclose(file);
                 lastWord = token;
 
                 if(validateRFID(tempRFID) == 0 && lastWord == NULL){
-                    deleteRow(myDatabase, tempRFID, tempLocation);
+                    deleteRow(myDatabase, tempRFID);
                 }
                 else if (validateRFID(tempRFID) != 0){
                     printf("\n-----------------------------\n");
