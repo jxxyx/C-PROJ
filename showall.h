@@ -3,6 +3,6 @@
 #include "Database.h"
 
 // Function prototype
-const char *readBaggageTable(BaggageTable *table, const char *RFIDValue);
+const char *showAll(BaggageTable *table);
 
 #endif
