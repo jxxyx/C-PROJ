@@ -104,6 +104,7 @@ if (file == NULL) {
     return;
 }
 
+// Initialize the database
 char RFIDValue[256], Location[256];
 while (fscanf(file, "%s %s", RFIDValue, Location) != EOF) {
     // Calculate the hash of the RFIDValue
@@ -214,6 +215,7 @@ fclose(file);
             //if token is 'EXIT', exit the program
             else if (strcmp(token, "EXIT") == 0) {
                 printf("Exiting program\n");
+                freeBaggageTable(myDatabase);
                 return 0;
                 break;
             }
@@ -221,6 +223,7 @@ fclose(file);
             //if token is 'BACK', go back to menu1
             else if (strcmp(token, backWord) == 0) {
                 printf("Going back to menu1...\n");
+                freeBaggageTable(myDatabase);
                 system("cls");
                 menu1();
                 break;
