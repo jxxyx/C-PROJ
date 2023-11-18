@@ -164,6 +164,7 @@ fclose(file);
                 printf("6. OPEN\n");
                 printf("7. SAVE\n");
                 printf("8. EXIT\n");
+                printf("9. BACK\n");
             }
 
             //if token is 'SHOW', display the database
