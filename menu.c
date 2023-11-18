@@ -105,7 +105,7 @@ BaggageTable *myDatabase = createBaggageTable(200); // Please change this!
 FILE *file = fopen("BaggageInfoEzDB.txt", "r");
 if (file == NULL) {
     printf("Failed to open the file.\n");
-    return;
+    return 0;
 }
 
 // Initialize the database
