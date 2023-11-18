@@ -53,8 +53,8 @@ int menu1 (){
         //if user input '?', display possible commands
         if (input[0] == '?') {
             printf("Possible commands:\n");
-            printf("1. OPEN\n");
-            printf("2. EXIT\n");
+            printf("OPEN\n");
+            printf("EXIT\n");
         }
 
         //if user input 'OPEN', open the file, clear the terminal, then go to menu2
@@ -167,7 +167,14 @@ fclose(file);
             }
             // ?
             else if(strcmp(token, quePasa) == 0){
-                menu2();
+                printf("?        - Show all commands    \n");
+                printf("SHOW ALL - SHOW ALL             \n");
+                printf("INSERT   - INSERT A12345C ANT   \n");
+                printf("QUERY    - QUERY A12345C        \n");
+                printf("UPDATE   - UPDATE A12345C BNT   \n");
+                printf("DELETE   - DELETE A12345C       \n");
+                printf("SAVE     - SAVE 'fileName.txt'  \n");
+                printf("BACK     - BACK                 \n");
             }
 
             // INSERT
@@ -299,6 +306,16 @@ fclose(file);
                     printf("-----------------------------\n");
                 }
             }
+
+            //Go back to menu1
+            else if(strcmp(token, backWord) == 0){
+                printf("Going back to menu1...\n");
+                freeBaggageTable(myDatabase);
+                system("cls");
+                menu1();
+                break;
+            }
+
             // Unrecognized Input
             else{
                 printf("Syntax Error: Unrecognized command %s ...\n", input);
