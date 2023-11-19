@@ -46,6 +46,8 @@ int menu1 (){
     printf("What would you like to do?\n");
     printf("Type '?' for more information.\n");
 
+    BaggageTable *myDatabase = createBaggageTable(200); // Please change this!
+
     //while loop to keep the program running
     while (1) {
         scanf("%s", input);
@@ -71,14 +73,16 @@ int menu1 (){
             }
             printf("\n"); // Move to the next line after the animation
 
+            //open the file using openFile() function from open.c
+            openFile(myDatabase);
+
+
             //clear the console
             system("cls");
 
-            //open the file using openFile() function from open.c
-            // openFile();
-
+        
             //go to menu2
-            menu2();
+            menu2(myDatabase);
             break;
         }
 
@@ -98,33 +102,33 @@ int menu1 (){
     return 1;
 }
 
-int menu2(){
-BaggageTable *myDatabase = createBaggageTable(200); // Please change this!
+int menu2(BaggageTable *myDatabase){
+// BaggageTable *myDatabase = createBaggageTable(200); // Please change this!
 
-//open the file, then store the data into myDatabase
-FILE *file = fopen("BaggageInfoEzDB.txt", "r");
-if (file == NULL) {
-    printf("Failed to open the file.\n");
-    return 0;
-}
+// //open the file, then store the data into myDatabase
+// FILE *file = fopen("BaggageInfoEzDB.txt", "r");
+// if (file == NULL) {
+//     printf("Failed to open the file.\n");
+//     return 0;
+// }
 
-// Initialize the database
-char RFIDValue[256], Location[256];
-while (fscanf(file, "%s %s", RFIDValue, Location) != EOF) {
-    // Calculate the hash of the RFIDValue
-    int index = calculateHash(RFIDValue, myDatabase->size);
+// // Initialize the database
+// char RFIDValue[256], Location[256];
+// while (fscanf(file, "%s %s", RFIDValue, Location) != EOF) {
+//     // Calculate the hash of the RFIDValue
+//     int index = calculateHash(RFIDValue, myDatabase->size);
 
-    // Create a new Baggage node
-    Baggage *newBaggage = malloc(sizeof(Baggage));
-    newBaggage->RFIDValue = strdup(RFIDValue);
-    newBaggage->Location = strdup(Location);
+//     // Create a new Baggage node
+//     Baggage *newBaggage = malloc(sizeof(Baggage));
+//     newBaggage->RFIDValue = strdup(RFIDValue);
+//     newBaggage->Location = strdup(Location);
 
-    // Insert the new node at the beginning of the linked list at the hashed index
-    newBaggage->next = myDatabase->table[index];
-    myDatabase->table[index] = newBaggage;
-}
+//     // Insert the new node at the beginning of the linked list at the hashed index
+//     newBaggage->next = myDatabase->table[index];
+//     myDatabase->table[index] = newBaggage;
+// }
 
-fclose(file);
+// fclose(file);
 
     printf("  ______     ______     _____     ______               \n");
     printf(" /\\  ___\\   /\\___  \\   /\\  __-.  /\\  == \\       \n");
@@ -226,7 +230,7 @@ fclose(file);
                     printf("-----------------------------\n");
                 }
                 else if(strcmp(secondWord, "ALL") == 0 && lastWord == NULL){
-                    showAll(myDatabase);
+                    showBaggageTable(myDatabase);
                 }
                 else{
                     printf("\n-----------------------------\n");
@@ -319,6 +323,11 @@ fclose(file);
                 system("cls");
                 menu1();
                 break;
+            }
+
+            else if(strcmp(token, SaveWord) == 0){
+                saveBaggageTable(myDatabase, "BaggageInfoEzDB.txt");
+                printf("Save Successful!\n");
             }
 
             // Unrecognized Input
