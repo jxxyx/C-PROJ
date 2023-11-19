@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #include <stddef.h>
 #include "Database.h"
 #include "fileio.h"
@@ -45,13 +47,12 @@
 //     }
 // }
 
-void openFile() {
+void openFile(BaggageTable *myDatabase) {
     char line[256];
     if(access("BaggageInfoEzDB.txt", F_OK ) != -1 ) {
         FILE *file = fopen("BaggageInfoEzDB.txt", "r");
             if (file == NULL) {
             printf("Failed to open the file.\n");
-            return 0;
         }
 
             // Initialize the database
@@ -72,12 +73,11 @@ void openFile() {
 
     fclose(file);
 
-    
+    //might need to look at the code below because file is already opened in if above
     } else {
         FILE *file = fopen("BaggageInfoEzDB.txt", "w");
         if (file == NULL) {
             printf("Could not create file\n");
-            return;
         }
         fclose(file);
         printf("No saved database found, creating new .txt database\n");

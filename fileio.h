@@ -8,6 +8,6 @@
 void saveBaggageTable(BaggageTable *table, const char *filename);
 
 //OPENFUNCTION
-void openFile();
+void openFile(BaggageTable *myDatabase);
 
 #endif

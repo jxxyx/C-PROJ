@@ -48,30 +48,6 @@ int menu1 (){
 
     BaggageTable *myDatabase = createBaggageTable(200); // Please change this!
 
-    FILE *file = fopen("BaggageInfoEzDB.txt", "r");
-    if (file == NULL) {
-        printf("Failed to open the file.\n");
-        return 0;
-    }
-
-    // Initialize the database
-    char RFIDValue[256], Location[256];
-    while (fscanf(file, "%s %s", RFIDValue, Location) != EOF) {
-        // Calculate the hash of the RFIDValue
-        int index = calculateHash(RFIDValue, myDatabase->size);
-
-        // Create a new Baggage node
-        Baggage *newBaggage = malloc(sizeof(Baggage));
-        newBaggage->RFIDValue = strdup(RFIDValue);
-        newBaggage->Location = strdup(Location);
-
-        // Insert the new node at the beginning of the linked list at the hashed index
-        newBaggage->next = myDatabase->table[index];
-        myDatabase->table[index] = newBaggage;
-    }
-
-    fclose(file);
-
     //while loop to keep the program running
     while (1) {
         scanf("%s", input);

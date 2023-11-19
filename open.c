@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stddef.h>
+#include <string.h>
+#include <stdlib.h>
 #include "Database.h"
 #include "open.h"
 #ifdef _WIN32
@@ -8,36 +10,38 @@
 #include <unistd.h>
 #endif
 
-
-void openFile() {
+//copied fileio.c's openFile here
+void openFile(BaggageTable *myDatabase) {
     char line[256];
     if(access("BaggageInfoEzDB.txt", F_OK ) != -1 ) {
         FILE *file = fopen("BaggageInfoEzDB.txt", "r");
-        printf("Current File Contents Since Last Save: \n");
-        if (file == NULL) {
-            printf("Could not open file\n");
-            return;
+            if (file == NULL) {
+            printf("Failed to open the file.\n");
         }
-        // Display the contents of the file
-        while (fgets(line, sizeof(line), file) != NULL) {
-            printf("%s", line);
-        }
-        fclose(file);
 
-        // Reopen the file in append mode
-        file = fopen("BaggageInfoEzDB.txt", "a");
-        if (file == NULL) {
-            printf("Could not open file\n");
-            return;
-        }
-        // You can append to the file here using fprintf or fputc
-        fclose(file);
+            // Initialize the database
+        char RFIDValue[256], Location[256];
+        while (fscanf(file, "%s %s", RFIDValue, Location) != EOF) {
+            // Calculate the hash of the RFIDValue
+            int index = calculateHash(RFIDValue, myDatabase->size);
 
+            // Create a new Baggage node
+            Baggage *newBaggage = malloc(sizeof(Baggage));
+            newBaggage->RFIDValue = strdup(RFIDValue);
+            newBaggage->Location = strdup(Location);
+
+            // Insert the new node at the beginning of the linked list at the hashed index
+            newBaggage->next = myDatabase->table[index];
+            myDatabase->table[index] = newBaggage;
+    }
+
+    fclose(file);
+
+    //might need to look at the code below because file is already opened in if above
     } else {
         FILE *file = fopen("BaggageInfoEzDB.txt", "w");
         if (file == NULL) {
             printf("Could not create file\n");
-            return;
         }
         fclose(file);
         printf("No saved database found, creating new .txt database\n");
