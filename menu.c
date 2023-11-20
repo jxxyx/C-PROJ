@@ -9,7 +9,6 @@
 #include "showall.c"
 #include "update.c"
 #include "delete.c"
-#include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -199,7 +198,7 @@ int menu2(BaggageTable *myDatabase){
                 tempLocation = token;
                 token = strtok(NULL, " ");
                 lastWord = token;
-
+                
                 if(validateRFID(tempRFID) == 0 && validateAirportName(tempLocation) == 0 && lastWord == NULL){
                     insertRecord(myDatabase, tempRFID, tempLocation);
                 }

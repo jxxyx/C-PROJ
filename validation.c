@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include "libs/cJSON/cJSON.h"
+#include <stdlib.h>
 
 int containsSpecialCharacter(const char* str) {
     for (int i = 0; str[i] != '\0'; i++) {
@@ -39,6 +41,49 @@ void removeWhitespace(char* str) {
         i++;
     }
     str[j] = '\0'; // Null-terminate the new string
+}
+
+int validate_iata_code(const char *user_input) {
+    // Load the JSON file
+    FILE *file = fopen("IATAairports.json", "rb");
+    if (!file) {
+        fprintf(stderr, "Could not open file\n");
+        return 1;
+    }
+
+    fseek(file, 0, SEEK_END);
+    long length = ftell(file);
+    fseek(file, 0, SEEK_SET);
+
+    char *data = malloc(length + 1);
+    fread(data, 1, length, file);
+    fclose(file);
+
+    // Parse the JSON data
+    cJSON *json = cJSON_Parse(data);
+    if (!json) {
+        fprintf(stderr, "Could not parse JSON\n");
+        free(data);
+        return 1;
+    }
+
+    // Check if the user's input matches any of the IATA codes
+    cJSON *item = NULL;
+    cJSON_ArrayForEach(item, json) {
+        cJSON *iata = cJSON_GetObjectItemCaseSensitive(item, "iata");
+        if (cJSON_IsString(iata) && strcmp(user_input, iata->valuestring) == 0) {
+            // The user's input is a valid IATA code
+            cJSON_Delete(json);
+            free(data);
+            return 0;
+        }
+    }
+
+    // The user's input is not a valid IATA code
+    fprintf(stderr, "Invalid IATA code: %s\n", user_input);
+    cJSON_Delete(json);
+    free(data);
+    return 10;
 }
 
 int validateRFID(char* RFIDValue) {
@@ -96,6 +141,11 @@ int validateAirportName(char* Location) {
         return 6;
     }
 
+    // // Check if string contains verified IATA airport code
+    // if (validate_iata_code(Location) != 0) {
+    //     return 10;
+    // }
+
     return VALID_INPUT;
 }
 
@@ -127,6 +177,9 @@ void handleError(int errorCode) {
             break;
         case DUPLICATE_KEY:
             printf("Duplicate key found.\n");
+            break;
+        case INVALID_AIRLINE_CODE:
+            printf("Invalid airline code.\n");
             break;
         default:
             printf("An unknown error occurred.\n");
