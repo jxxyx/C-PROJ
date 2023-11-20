@@ -46,7 +46,7 @@ int menu1 (){
     printf("What would you like to do?\n");
     printf("Type '?' for more information.\n");
 
-    BaggageTable *myDatabase = createBaggageTable(200); // Please change this!
+    BaggageTable *myDatabase = createBaggageTable(2); // Please change this!
 
     //while loop to keep the program running
     while (1) {
