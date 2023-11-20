@@ -9,7 +9,6 @@
 #include "showall.c"
 #include "update.c"
 #include "delete.c"
-#include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -57,7 +56,11 @@ int menu1 (){
 
         // If user input '?', display possible commands
         if (token != NULL && strcmp(token, "?") == 0) {
-            // ... (existing code)
+            if (input[0] == '?') {
+            printf("Possible commands:\n");
+            printf("OPEN\n");
+            printf("EXIT\n");
+        }
 
         } else if (token != NULL && strcmp(token, "OPEN") == 0) {
             // Check if there is another token (filename) after OPEN
@@ -194,7 +197,7 @@ int menu2(BaggageTable *myDatabase){
                 tempLocation = token;
                 token = strtok(NULL, " ");
                 lastWord = token;
-
+                
                 if(validateRFID(tempRFID) == 0 && validateAirportName(tempLocation) == 0 && lastWord == NULL){
                     insertRecord(myDatabase, tempRFID, tempLocation);
                 }
