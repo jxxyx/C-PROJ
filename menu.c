@@ -330,9 +330,18 @@ int menu2(BaggageTable *myDatabase){
                 break;
             }
 
-            else if(strcmp(token, SaveWord) == 0){
-                saveBaggageTable(myDatabase, "BaggageInfoEzDB.txt");
-                printf("Save Successful!\n");
+            else if (strcmp(token, SaveWord) == 0) {
+                token = strtok(NULL, " ");
+
+                if (token != NULL) {
+                    printf("\n-----------------------------\n");
+                    printf("Syntax Error: Additional input detected after SAVE\n");
+                    printf("-----------------------------\n");
+                } else {
+                    // Proceed to save the BaggageTable
+                    saveBaggageTable(myDatabase, "BaggageInfoEzDB.txt");
+                    printf("Save Successful!\n");
+                }
             }
 
             // Unrecognized Input
