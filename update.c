@@ -14,13 +14,15 @@ void updateRow(BaggageTable *table, const char* RFIDValue, const char* Location)
         if (strcmp(current->RFIDValue, RFIDValue) == 0) {
             // Update the airport code if the ID matches
             strncpy(current->Location, Location, 4);
-            printf("Row with ID %s updated with new airport code %s\n", RFIDValue, Location);
-            writeTableToFile(table, "BaggageInfoEZDB.txt");
+            printf("\n-----------------------------\n");
+            printf("RFID %s updated with new Airport Code %s\n", RFIDValue, Location);
+            printf("-----------------------------\n");
             return;  // Exit the function after updating
         }
         current = current-> next;
     }
 
-    printf("Row with ID %s not found in the database\n", RFIDValue);
-}  
-
+    printf("\n-----------------------------\n");
+    printf("Record RFID %s not found!\n", RFIDValue);
+    printf("-----------------------------\n");
+}

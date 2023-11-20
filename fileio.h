@@ -8,7 +8,7 @@
 void saveBaggageTable(BaggageTable *table, const char *filename);
 
 //OPENFUNCTION
-void openFile();
+void openFile(BaggageTable *myDatabase);
 
 //WRITETABLETOFILE
 void writeTableToFile(BaggageTable *table, const char* filename);

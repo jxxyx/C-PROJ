@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+// Create a function to read DB txt file
+
 void showBaggageTable(BaggageTable *table) {
     int count = 0;
 
@@ -32,16 +34,3 @@ void showBaggageTable(BaggageTable *table) {
     }
     printf("You have reached the end of the record(s) :>\n");
 }
-
-// int main() {
-//     // Create a new BaggageTable
-//     BaggageTable *table = createBaggageTable(10); // Assuming createBaggageTable is a function that initializes a new BaggageTable
-
-//     // Display the table
-//     showBaggageTable(table);
-
-//     // Free memory
-//     freeBaggageTable(table); // Assuming freeBaggageTable is a function that frees all memory associated with the table
-
-//     return 0;
-// }

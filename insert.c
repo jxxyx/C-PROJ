@@ -6,7 +6,7 @@
 #include "Database.h"
 #include "fileio.h"
 
-void insertRecord(BaggageTable *table, const char *RFIDValue, const char *Location) 
+void insertRecord(BaggageTable *table, const char *RFIDValue, const char *Location)
 {
     int hash = calculateHash(RFIDValue, table->size);
 
@@ -14,7 +14,9 @@ void insertRecord(BaggageTable *table, const char *RFIDValue, const char *Locati
     Baggage *current = table->table[hash];
     while (current != NULL) {
         if (strcmp(current->RFIDValue, RFIDValue) == 0) {
-            printf("The record with RFID %s already exists in the database.\n", RFIDValue);
+            printf("\n-----------------------------\n");
+            printf("Record for RFID %s already found in Database!\n", RFIDValue);
+            printf("-----------------------------\n");
             return;
         }
         current = current->next;
@@ -27,10 +29,11 @@ void insertRecord(BaggageTable *table, const char *RFIDValue, const char *Locati
     newRecord->next = table->table[hash];
     table->table[hash] = newRecord;
 
-    writeTableToFile(table, "BaggageInfoEzDB.txt");
-    
+    printf("\n-----------------------------\n");
+    printf("Record for RFID %s : %s successfully inserted!\n", RFIDValue, Location);
+    printf("-----------------------------\n");
+
     if (strcmp(RFIDValue, "RFIDValue") == 0) {
         printf("The record with RFID already exists in the database.\n");
     }
 }
-
