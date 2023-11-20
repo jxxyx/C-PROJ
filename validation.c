@@ -141,10 +141,10 @@ int validateAirportName(char* Location) {
         return 6;
     }
 
-    // // Check if string contains verified IATA airport code
-    // if (validate_iata_code(Location) != 0) {
-    //     return 10;
-    // }
+    // Check if string contains verified IATA airport code
+    if (validate_iata_code(Location) != 0) {
+        return 10;
+    }
 
     return VALID_INPUT;
 }

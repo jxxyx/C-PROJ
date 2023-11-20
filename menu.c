@@ -57,7 +57,7 @@ int menu1 (){
         // If user input '?', display possible commands
         if (token != NULL && strcmp(token, "HELP") == 0) {
             //if user input '?', display possible commands
-            if (input[0] == '?') {
+            if (input, "HELP") {
                 printf("Possible commands:\n");
                 printf("OPEN\t - filename.txt\n");
                 printf("EXIT\t - Exit Program\n");
@@ -146,7 +146,7 @@ int menu2(BaggageTable *myDatabase){
     printf("   \\/_____/   \\/_____/   \\/____/   \\/_____/        \n");
     printf("                                                       \n");
 
-    char quePasa[2] = {'H', 'E', 'L', 'P', '\0'};
+    char quePasa[9] = {'H', 'E', 'L', 'P', '\0'};
     char ShowWord[9] = {'S', 'H', 'O', 'W','\0'};
     char InsertWord[9] = {'I', 'N', 'S', 'E', 'R', 'T','\0'};
     char QueryWord[6] = {'Q', 'U', 'E', 'R', 'Y', '\0'};
@@ -163,12 +163,15 @@ int menu2(BaggageTable *myDatabase){
     char* command;
     char* lastWord;
 
-    printf("What would you like to do?\n");
-    printf("Type 'HELP' for more information.\n");
+    // printf("What would you like to do?\n");
+    // printf("Type 'HELP' for more information.\n");
 
     char input[100];
 
     do{
+        printf("What would you like to do?\n");
+        printf("Type 'HELP' for more information.\n");
+
         fgets(input, 100, stdin);
         input[strcspn(input, "\n")] = 0; //remove the newline character from fgets
         char *token = strtok(input, " ");;//Get the first token
@@ -180,7 +183,7 @@ int menu2(BaggageTable *myDatabase){
             }
             // ?
             else if(strcmp(token, quePasa) == 0){
-                printf("HELP        - Show all commands    \n");
+                printf("HELP     - Show all commands    \n");
                 printf("SHOW ALL - SHOW ALL             \n");
                 printf("INSERT   - INSERT A12345C ANT   \n");
                 printf("QUERY    - QUERY A12345C        \n");
