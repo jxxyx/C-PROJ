@@ -44,7 +44,7 @@ int menu1 (){
     //user input as a string
     char input[100];
     printf("What would you like to do?\n");
-    printf("Type '?' for more information.\n");
+    printf("Type 'HELP' for more information.\n");
 
     BaggageTable *myDatabase = createBaggageTable(2); // Please change this!
 
@@ -56,8 +56,13 @@ int menu1 (){
         char *token = strtok(input, " ");
 
         // If user input '?', display possible commands
-        if (token != NULL && strcmp(token, "?") == 0) {
-            // ... (existing code)
+        if (token != NULL && strcmp(token, "HELP") == 0) {
+            //if user input '?', display possible commands
+            if (input[0] == '?') {
+                printf("Possible commands:\n");
+                printf("OPEN\t - filename.txt\n");
+                printf("EXIT\t - Exit Program\n");
+        }
 
         } else if (token != NULL && strcmp(token, "OPEN") == 0) {
             // Check if there is another token (filename) after OPEN
@@ -142,7 +147,7 @@ int menu2(BaggageTable *myDatabase){
     printf("   \\/_____/   \\/_____/   \\/____/   \\/_____/        \n");
     printf("                                                       \n");
 
-    char quePasa[2] = {'?', '\0'};
+    char quePasa[2] = {'H', 'E', 'L', 'P', '\0'};
     char ShowWord[9] = {'S', 'H', 'O', 'W','\0'};
     char InsertWord[9] = {'I', 'N', 'S', 'E', 'R', 'T','\0'};
     char QueryWord[6] = {'Q', 'U', 'E', 'R', 'Y', '\0'};
@@ -160,7 +165,7 @@ int menu2(BaggageTable *myDatabase){
     char* lastWord;
 
     printf("What would you like to do?\n");
-    printf("Type '?' for more information.\n");
+    printf("Type 'HELP' for more information.\n");
 
     char input[100];
 
@@ -176,7 +181,7 @@ int menu2(BaggageTable *myDatabase){
             }
             // ?
             else if(strcmp(token, quePasa) == 0){
-                printf("?        - Show all commands    \n");
+                printf("HELP        - Show all commands    \n");
                 printf("SHOW ALL - SHOW ALL             \n");
                 printf("INSERT   - INSERT A12345C ANT   \n");
                 printf("QUERY    - QUERY A12345C        \n");
