@@ -9,21 +9,17 @@
 #define MAX_DATABASE_SIZE 0
 
 // Create a function to create and start a hashmap
-BaggageTable* createBaggageTable(int size) {
-    BaggageTable *table = malloc(sizeof(BaggageTable));
-    if (table == NULL) {
-        printf("Failed to allocate memory for BaggageTable\n");
-        return NULL;
-    }
-
-    table->table = calloc(size, sizeof(Baggage*));
-    if (table->table == NULL) {
-        printf("Failed to allocate memory for BaggageTable->table\n");
-        free(table);
-        return NULL;
-    }
-
+BaggageTable *createBaggageTable(int size) {
+    // Creates a new baggage table 
+    BaggageTable *table = (BaggageTable *)malloc(sizeof(BaggageTable));
+    // Size of the table will specify the number of slots it will have
     table->size = size;
+    table->table = (Baggage **)malloc(sizeof(Baggage *) * size);
+
+    for (int i = 0; i < size; i++) {
+        table->table[i] = NULL;
+    }
+
     return table;
 }
 
@@ -42,16 +38,43 @@ int calculateHash(const char *RFIDValue, int size) {
     return hash % size;
 }
 
-// Create a function to free the memory allocation of the Database to limit its use elsewhere
-void freeBaggageTable(BaggageTable *table) {
+// Create a function to save the Database into a txt file 
+void saveBaggageTable(BaggageTable *table, const char *filename) {
+    FILE *file = fopen(filename, "w");
+
+    if (file == NULL) {
+        printf("Could not open file to save\n");
+        return;
+    }
+
     for (int i = 0; i < table->size; i++) {
         Baggage *current = table->table[i];
+
         while (current != NULL) {
-            Baggage *next = current->next;
+            fprintf(file, "%s %s\n", current->RFIDValue, current->Location);
+            current = current-> next;
+        }
+    }
+
+    fclose(file);
+}
+
+// Create a function to free the memory allocation of the Database to limit its use elsewhere
+void freeBaggageTable(BaggageTable *table) {
+    // Frees memory allocated to the baggage table
+    for (int i = 0; i < table->size; i++) {
+        Baggage *current = table->table[i];
+        Baggage *next;
+
+        while (current != NULL) {
+            next = current-> next;
+            free(current->RFIDValue);
+            free(current->Location);
             free(current);
             current = next;
         }
     }
+
     free(table->table);
     free(table);
 }
@@ -59,15 +82,15 @@ void freeBaggageTable(BaggageTable *table) {
 void initializeDatabase(BaggageTable *table) {
 }
 
-// int main() {
-//     BaggageTable *myDatabase = createBaggageTable(MAX_DATABASE_SIZE);
-//     initializeDatabase(myDatabase);
+int main() {
+    BaggageTable *myDatabase = createBaggageTable(MAX_DATABASE_SIZE);
+    initializeDatabase(myDatabase);
 
-//     // Save the database to a file
-//      saveBaggageTable(myDatabase, "BaggageInfoEzDB.txt");
+    // Save the database to a file
+     saveBaggageTable(myDatabase, "BaggageInfoEzDB.txt");
 
-//     // Free the memory when you're done
-//     freeBaggageTable(myDatabase);
+    // Free the memory when you're done
+    freeBaggageTable(myDatabase);
 
-//      return 0;
-// }
+     return 0;
+}
