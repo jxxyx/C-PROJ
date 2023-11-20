@@ -354,7 +354,7 @@ int menu2(BaggageTable *myDatabase){
     return 2;
 }
 
-int main() {
-    menu1();
-    return 0;
-}
+// int main() {
+//     menu1();
+//     return 0;
+// }
