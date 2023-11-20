@@ -4,6 +4,6 @@
 #define OPENFILE_H
 
 //OPENFUNCTION
-void openFile();
+void openFile(BaggageTable *myDatabase, FILE *file);
 
 #endif

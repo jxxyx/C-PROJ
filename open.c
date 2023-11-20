@@ -11,7 +11,7 @@
 #endif
 
 //copied fileio.c's openFile here
-void openFile(BaggageTable *myDatabase) {
+void openFile(BaggageTable *myDatabase, FILE *file) {
     char line[256];
     if(access("BaggageInfoEzDB.txt", F_OK ) != -1 ) {
         FILE *file = fopen("BaggageInfoEzDB.txt", "r");

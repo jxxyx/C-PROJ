@@ -48,55 +48,58 @@ int menu1 (){
 
     BaggageTable *myDatabase = createBaggageTable(2); // Please change this!
 
-    //while loop to keep the program running
-    while (1) {
-        scanf("%s", input);
+     while (1) {
+        fgets(input, sizeof(input), stdin);
+        input[strcspn(input, "\n")] = 0;  // Remove the newline character from fgets
 
-        //if user input '?', display possible commands
-        if (input[0] == '?') {
-            printf("Possible commands:\n");
-            printf("OPEN\n");
-            printf("EXIT\n");
-        }
+        // Tokenize the input to check the command
+        char *token = strtok(input, " ");
 
-        //if user input 'OPEN', open the file, clear the terminal, then go to menu2
-        else if (input[0] == 'O' && input[1] == 'P' && input[2] == 'E' && input[3] == 'N') {
+        // If user input '?', display possible commands
+        if (token != NULL && strcmp(token, "?") == 0) {
+            // ... (existing code)
 
-            // Animation to show that the file is being opened
-            for(int i = 0; i < 3; i++) {
-            printf("\rInitializing Database");
-            for(int j = 0; j <= i; j++) {
-                printf(".");
-                fflush(stdout); // Flushes the output buffer of the stream
+        } else if (token != NULL && strcmp(token, "OPEN") == 0) {
+            // Check if there is another token (filename) after OPEN
+            token = strtok(NULL, " ");
+            if (token != NULL) {
+                // Animation to show that the file is being opened
+                for (int i = 0; i < 3; i++) {
+                    printf("\rInitializing Database");
+                    for (int j = 0; j <= i; j++) {
+                        printf(".");
+                        fflush(stdout);  // Flushes the output buffer of the stream
+                    }
+                    sleep(1);
+                }
+                printf("\n");  // Move to the next line after the animation
+
+                // Attempt to open the specified file
+                FILE *file = fopen(token, "r");
+                if (file != NULL) {
+                    // Create a new BaggageTable and initialize it
+                    myDatabase = createBaggageTable(200);  // Please change this!
+
+                    // Open the file using openFile() function from open.c
+                    openFile(myDatabase, file);
+
+                    // Clear the console
+                    system("cls");
+
+                    // Go to menu2
+                    menu2(myDatabase);
+                    break;
+                } else {
+                    printf("Error: Unable to open file %s\n", token);
+                }
+            } else {
+                printf("Error: Please provide a filename after OPEN\n");
             }
-            sleep(1);
-            }
-            printf("\n"); // Move to the next line after the animation
-
-            // BaggageTable *myDatabase = createBaggageTable(200); // Please change this!
-
-            //open the file using openFile() function from open.c
-            openFile(myDatabase);
-
-
-            //clear the console
-            system("cls");
-
-        
-            //go to menu2
-            menu2(myDatabase);
-            break;
-        }
-
-        //if user input 'EXIT', exit the program
-        else if (input[0] == 'E' && input[1] == 'X' && input[2] == 'I' && input[3] == 'T') {
+        } else if (token != NULL && strcmp(token, "EXIT") == 0) {
             printf("Exiting program\n");
             return 0;
             break;
-        }
-
-        //if none of the above, display error message
-        else {
+        } else {
             printf("Invalid command. Please try again.\n");
         }
     }

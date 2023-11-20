@@ -1,4 +1,4 @@
-
+#include <stdio.h>
 #include "Database.h"
 //header guard
 #ifndef FILEIO_H
@@ -8,7 +8,7 @@
 void saveBaggageTable(BaggageTable *table, const char *filename);
 
 //OPENFUNCTION
-void openFile(BaggageTable *myDatabase);
+void openFile(BaggageTable *myDatabase, FILE *file);
 
 //WRITETABLETOFILE
 void writeTableToFile(BaggageTable *table, const char* filename);
