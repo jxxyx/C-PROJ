@@ -45,16 +45,17 @@ int menu1 (){
 
     //user input as a string
     char input[100];
-    printf("\t\t - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
-    printf("\t\t                                         # HOME PAGE #                                             \n");
-    printf("\t\t - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
-    printf("\t\t                                  - What would you like to do?                                     \n");
-    printf("\t\t                                  - Type 'HELP' for more information.                              \n");
-    printf("\t\t - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
+    printf("\t\t - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
+    printf("\t\t|                                         # HOME PAGE #                                            |\n");
+    printf("\t\t - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
+    printf("\t\t|                                 - What would you like to do?                                     |\n");
+    printf("\t\t|                                 - Type 'HELP' for more information.                              |\n");
+    printf("\t\t - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
 
     BaggageTable *myDatabase = createBaggageTable(2); // Please change this!
 
      while (1) {
+        printf("\t\t"); // Adjusted indentation for user input
         fgets(input, sizeof(input), stdin);
         input[strcspn(input, "\n")] = 0;  // Remove the newline character from fgets
 
@@ -65,18 +66,24 @@ int menu1 (){
         if (token != NULL && strcmp(token, "HELP") == 0) {
             //if user input '?', display possible commands
             if (input, "HELP") {
-                printf("Possible commands:\n");
-                printf("OPEN\t - filename.txt\n");
-                printf("EXIT\t - Exit Program\n");
+                printf("\n");
+                printf("\t\tYou have entered: %s\n", input);
+                printf("\t\t- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
+                printf("\t\tPossible commands: \n");
+                printf("\t\tOPEN\t - filename.txt\n");
+                printf("\t\tEXIT\t - Exit Program\n");
+                printf("\t\t- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
         }
 
         } else if (token != NULL && strcmp(token, "OPEN") == 0) {
             // Check if there is another token (filename) after OPEN
             token = strtok(NULL, " ");
             if (token != NULL) {
+                printf("\n");
+                printf("\t\tYou have entered: %s %s\n",input, token);
                 // Animation to show that the file is being opened
                 for (int i = 0; i < 3; i++) {
-                    printf("\rInitializing Database");
+                    printf("\r\t\tInitializing Database");
                     for (int j = 0; j <= i; j++) {
                         printf(".");
                         fflush(stdout);  // Flushes the output buffer of the stream
@@ -101,17 +108,18 @@ int menu1 (){
                     menu2(myDatabase);
                     break;
                 } else {
-                    printf("Error: Unable to open file %s\n", token);
+                    printf("\t\tError: Unable to open file %s\n", token);
                 }
             } else {
-                printf("Error: Please provide a filename after OPEN\n");
+                printf("\t\tError: Please provide a filename after OPEN\n");
             }
         } else if (token != NULL && strcmp(token, "EXIT") == 0) {
-            printf("Exiting program\n");
+            printf("\n");
+            printf("\t\tExiting program\n");
             return 0;
             break;
         } else {
-            printf("Invalid command. Please try again.\n");
+            printf("\t\tInvalid command. Please try again.\n");
         }
     }
 
