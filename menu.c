@@ -15,35 +15,42 @@
 #include <unistd.h>
 
 int menu1 (){
-    printf("**********************************************************************************************************************\n");
-    printf("*                                              Declaration                                                           *\n");
-    printf("*  SIT's policy on copying does not allow the students to copy source code as well as assessment solutions           *\n");
-    printf("*  from another person or other places. It is the students' responsibility to guarantee that their assessment        *\n");
-    printf("*  solutions are their own work. Meanwhile, the students must also ensure that their work is not accessible          *\n");
-    printf("*  by others. Where such plagiarism is detected, both of the assessments involved will receive ZERO mark.            *\n");
-    printf("*                                                                                                                    *\n");
-    printf("*  We hereby declare that:                                                                                           *\n");
-    printf("*   -   We fully understand and agree to the abovementioned plagiarism policy.                                       *\n");
-    printf("*   -   We did not copy any code from others or from other places.                                                   *\n");
-    printf("*   -   We did not share our codes with others or upload to any other places for public access.                      *\n");
-    printf("*   -   We agree that our project will receive Zero mark if there is any plagiarism detected.                        *\n");
-    printf("*                                                                                                                    *\n");
-    printf("*  Declared by: Group Name: (please insert your group name)                                                          *\n");
-    printf("*  Team members:                                                                                                     *\n");
-    printf("*   1)  Mock Jun Yu                                                                                                  *\n");
-    printf("*   2)  Ng Shu Yi                                                                                                    *\n");
-    printf("*   3)  Julian Teo                                                                                                   *\n");
-    printf("*   4)  Soon Jun Hong, Samuel                                                                                        *\n");
-    printf("*   5)  Muhammad Yusri Bin Abdullah                                                                                  *\n");
-    printf("*   6)  Tamo Cholo Rafael Tandoc                                                                                     *\n");
-    printf("*  Date: (please insert the date when you submit your group project).                                                *\n");
-    printf("*                                                                                                                    *\n");
-    printf("**********************************************************************************************************************\n");
+    printf("\t\t* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
+    printf("\t\t*                                      DECLARATION                                                *\n");
+    printf("\t\t*  SIT's policy on copying does not allow the students to copy source code as well as assessment  *\n");
+    printf("\t\t*  solutions from another person or other places. It is the students' responsibility to guarantee *\n");
+    printf("\t\t*  that their assessment solutions are their own work. Meanwhile, the students must also ensure   *\n");
+    printf("\t\t*  that their work is not accessible by others. Where such plagiarism is detected, both of the    *\n");
+    printf("\t\t*  assessments involved will receive ZERO mark.                                                   *\n");
+    printf("\t\t*                                                                                                 *\n");
+    printf("\t\t*  We hereby declare that:                                                                        *\n");
+    printf("\t\t*  -  We fully understand and agree to the abovementioned plagiarism policy.                      *\n");
+    printf("\t\t*  -  We did not copy any code from others or from other places.                                  *\n");
+    printf("\t\t*  -  We did not share our codes with others or upload to any other places for public access.     *\n");
+    printf("\t\t*  -  We agree that our project will receive Zero mark if there is any plagiarism detected.       *\n");
+    printf("\t\t*                                                                                                 *\n");
+    printf("\t\t*  Declared by: Group Name: (please insert your group name)                                       *\n");
+    printf("\t\t*  Team members:                                                                                  *\n");
+    printf("\t\t*  1)  Mock Jun Yu                                                                                *\n");
+    printf("\t\t*  2)  Ng Shu Yi                                                                                  *\n");
+    printf("\t\t*  3)  Julian Teo                                                                                 *\n");
+    printf("\t\t*  4)  Soon Jun Hong, Samuel                                                                      *\n");
+    printf("\t\t*  5)  Muhammad Yusri Bin Abdullah                                                                *\n");
+    printf("\t\t*  6)  Tamo Cholo Rafael Tandoc                                                                   *\n");
+    printf("\t\t*  Date: (23/11/2023 XXXXHRS).                                                                    *\n");
+    printf("\t\t*                                                                                                 *\n");
+    printf("\t\t* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
+    printf("\n");
+    printf("\n");
 
     //user input as a string
     char input[100];
-    printf("What would you like to do?\n");
-    printf("Type 'HELP' for more information.\n");
+    printf("\t\t - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
+    printf("\t\t                                         # HOME PAGE #                                             \n");
+    printf("\t\t - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
+    printf("\t\t                                  - What would you like to do?                                     \n");
+    printf("\t\t                                  - Type 'HELP' for more information.                              \n");
+    printf("\t\t - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
 
     BaggageTable *myDatabase = createBaggageTable(2); // Please change this!
 
