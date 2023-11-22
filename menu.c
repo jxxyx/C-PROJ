@@ -13,6 +13,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <time.h>
+#include "changelog.h"
 
 int menu1 (){
     printf("\t\t* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
@@ -240,6 +242,11 @@ int menu2(BaggageTable *myDatabase){
 
                 if(validateRFID(tempRFID) == 0 && validateResult == 0 && lastWord == NULL){
                     insertRecord(myDatabase, tempRFID, tempLocation);
+
+                    // Log the addition
+                    char changeDescription[256];
+                    snprintf(changeDescription, sizeof(changeDescription), "Added RFID %s with location %s", tempRFID, tempLocation);
+                    logChange(changeDescription);
                 }
                 else if(validateRFID(tempRFID) != 0)    {
                     printf("\n\t\t-----------------------------\n");
@@ -327,6 +334,10 @@ int menu2(BaggageTable *myDatabase){
 
                 if(validateRFID(tempRFID) == 0 && validateAirportName(tempLocation) == 0 && lastWord == NULL){
                     updateRow(myDatabase, tempRFID, tempLocation);
+                    // Log the update
+                    char changeDescription[256];
+                    snprintf(changeDescription, sizeof(changeDescription), "Updated RFID %s to location %s", tempRFID, tempLocation);
+                    logChange(changeDescription);
                 }
                 else if(validateRFID(tempRFID) != 0)    {
                     printf("\n\t\t-----------------------------\n");
@@ -367,6 +378,11 @@ int menu2(BaggageTable *myDatabase){
 
                     if(strcmp(confirmation, "YES") == 0){
                         deleteRow(myDatabase, tempRFID);
+
+                        // Log the deletion
+                        char changeDescription[256];
+                        snprintf(changeDescription, sizeof(changeDescription), "Deleted RFID %s", tempRFID);
+                        logChange(changeDescription);
                     }
                     else{
                         printf("Operation cancelled.\n");
@@ -415,6 +431,8 @@ int menu2(BaggageTable *myDatabase){
 
                     if(strcmp(confirmation, "YES") == 0){
                         saveBaggageTable(myDatabase, "BaggageInfoEzDB.txt");
+                        // Update log file
+                        saveChanges("BaggageInfoEzDB.txt");
                         printf("\t\tSave Successful!\n");
                     }
                     else{

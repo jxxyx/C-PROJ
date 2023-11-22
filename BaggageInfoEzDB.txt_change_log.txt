@@ -1,0 +1,4 @@
+Change made at 2023-11-22 19:26:02: Updated RFID 009 to location SIN
+Change made at 2023-11-22 19:33:42: Updated RFID 009 to location JFK
+Change made at 2023-11-22 19:41:05: Added RFID 020 with location SIN
+Change made at 2023-11-22 19:41:36: Deleted RFID 020
