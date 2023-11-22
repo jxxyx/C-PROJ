@@ -41,7 +41,7 @@ void saveBaggageTable(BaggageTable *table, const char *filename) {
     FILE *file = fopen(filename, "w");
 
     if (file == NULL) {
-        printf("Could not open file to save\n");
+        printf("\t\tCould not open file to save\n");
         return;
     }
 
