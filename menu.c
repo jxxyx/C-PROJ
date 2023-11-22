@@ -31,7 +31,7 @@ int menu1 (){
     printf("\t\t*  -  We did not share our codes with others or upload to any other places for public access.     *\n");
     printf("\t\t*  -  We agree that our project will receive Zero mark if there is any plagiarism detected.       *\n");
     printf("\t\t*                                                                                                 *\n");
-    printf("\t\t*  Declared by: Group Name: (please insert your group name)                                       *\n");
+    printf("\t\t*  Declared by: Group Name: P9 Group 3                                                            *\n");
     printf("\t\t*  Team members:                                                                                  *\n");
     printf("\t\t*  1)  Mock Jun Yu                                                                                *\n");
     printf("\t\t*  2)  Ng Shu Yi                                                                                  *\n");
@@ -39,7 +39,7 @@ int menu1 (){
     printf("\t\t*  4)  Soon Jun Hong, Samuel                                                                      *\n");
     printf("\t\t*  5)  Muhammad Yusri Bin Abdullah                                                                *\n");
     printf("\t\t*  6)  Tamo Cholo Rafael Tandoc                                                                   *\n");
-    printf("\t\t*  Date: (23/11/2023 XXXXHRS).                                                                    *\n");
+    printf("\t\t*  Date: 23/11/2023                                                                               *\n");
     printf("\t\t*                                                                                                 *\n");
     printf("\t\t* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n");
     printf("\n");
