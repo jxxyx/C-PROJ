@@ -127,32 +127,7 @@ int menu1 (){
 }
 
 int menu2(BaggageTable *myDatabase){
-// BaggageTable *myDatabase = createBaggageTable(200); // Please change this!
 
-// //open the file, then store the data into myDatabase
-// FILE *file = fopen("BaggageInfoEzDB.txt", "r");
-// if (file == NULL) {
-//     printf("Failed to open the file.\n");
-//     return 0;
-// }
-
-// // Initialize the database
-// char RFIDValue[256], Location[256];
-// while (fscanf(file, "%s %s", RFIDValue, Location) != EOF) {
-//     // Calculate the hash of the RFIDValue
-//     int index = calculateHash(RFIDValue, myDatabase->size);
-
-//     // Create a new Baggage node
-//     Baggage *newBaggage = malloc(sizeof(Baggage));
-//     newBaggage->RFIDValue = strdup(RFIDValue);
-//     newBaggage->Location = strdup(Location);
-
-//     // Insert the new node at the beginning of the linked list at the hashed index
-//     newBaggage->next = myDatabase->table[index];
-//     myDatabase->table[index] = newBaggage;
-// }
-
-// fclose(file);
     printf("\t\t- - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
     printf("\t\t                         MAINPAGE                         \n");
     printf("\t\t- - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
@@ -180,9 +155,6 @@ int menu2(BaggageTable *myDatabase){
 
     char* command;
     char* lastWord;
-
-    // printf("What would you like to do?\n");
-    // printf("Type 'HELP' for more information.\n");
 
     char input[100];
 
@@ -384,7 +356,3 @@ int menu2(BaggageTable *myDatabase){
     return 2;
 }
 
-// int main() {
-//     menu1();
-//     return 0;
-// }

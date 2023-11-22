@@ -3,8 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-// For all of the codes here, I will need more time to understand it, as well as finetune it to match the descriptions of the functions in the project brief
-
 // Specifying the size for the initial data array, setting a limit to the initial load of the DB
 #define MAX_DATABASE_SIZE 0
 
