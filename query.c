@@ -20,7 +20,7 @@ const char *queryTag(BaggageTable *table, const char *RFIDValue) {
         current = current->next; // move to the next node
     }
     if (current == NULL){ // if the current node is null
-        printf("\t\t\n-----------------------------\n");
+        printf("\n\t\t-----------------------------\n");
         printf("\t\tRecord for %s not found...\n", RFIDValue);
         printf("\t\t-----------------------------\n");
     }

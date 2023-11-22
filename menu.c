@@ -65,7 +65,7 @@ int menu1 (){
         // If user input '?', display possible commands
         if (token != NULL && strcmp(token, "HELP") == 0) {
             //if user input '?', display possible commands
-            if (input, "HELP") {
+            if (strcmp(input, "HELP") == 0) {
                 printf("\n");
                 printf("\t\tYou have entered: %s\n", input);
                 printf("\t\t- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
@@ -223,7 +223,9 @@ int menu2(BaggageTable *myDatabase){
                 token = strtok(NULL, " ");
                 lastWord = token;
                 
-                if(validateRFID(tempRFID) == 0 && validateAirportName(tempLocation) == 0 && lastWord == NULL){
+                int validateResult = validateAirportName(tempLocation);
+
+                if(validateRFID(tempRFID) == 0 && validateResult == 0 && lastWord == NULL){
                     insertRecord(myDatabase, tempRFID, tempLocation);
                 }
                 else if(validateRFID(tempRFID) != 0)    {
@@ -232,12 +234,12 @@ int menu2(BaggageTable *myDatabase){
                     handleError(validateRFID(tempRFID));
                     printf("\t\t-----------------------------\n");
                 }
-                else if(validateAirportName(tempLocation) != 0)    {
-                    printf("\n\t\t-----------------------------\n");
-                    printf("\t\tSyntax Error: ");
-                    handleError(validateAirportName(tempLocation));
-                    printf("\t\t-----------------------------\n");
-                }
+                else if(validateResult != 0)    {
+                printf("\n\t\t-----------------------------\n");
+                printf("\t\tSyntax Error: ");
+                handleError(validateResult);
+                printf("\t\t-----------------------------\n");
+                            }
                 else{
                     printf("\t\t\n-----------------------------\n");
                     printf("\t\tSyntax Error: Additional Input Detected!\n");
