@@ -17,20 +17,19 @@ void showBaggageTable(BaggageTable *table) {
         }
     }
 
-    printf("\n-----------------------------\n");
-    printf("Total Record(s) Found: %d\n", count);
-    printf("-----------------------------\n");
+    printf("\n\t\t----------------------------------------\n");
+    printf("\t\tTotal Record(s) Found: %d\n", count);
+    printf("\t\t----------------------------------------\n");
 
     // Second pass to print the records
     for (int i = 0; i < table->size; i++) {
         Baggage *current = table->table[i];
         while (current != NULL) {
-            printf("Record:\n");
-            printf("  RFID Value: %s\n", current->RFIDValue);
-            printf("  Location:   %s\n", current->Location);
-            printf("-----------------------------\n");
+            // printf("\t\tRecord:\n");
+            printf("  \t\tRFID Value: %s : %s\n", current->RFIDValue, current->Location);
+            printf("\t\t----------------------------------------\n");
             current = current->next;
         }
     }
-    printf("You have reached the end of the record(s) :>\n");
+    printf("\t\tYou have reached the end of the record(s) :>\n");
 }

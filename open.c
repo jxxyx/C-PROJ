@@ -16,7 +16,7 @@ void openFile(BaggageTable *myDatabase, FILE *file) {
     if(access("BaggageInfoEzDB.txt", F_OK ) != -1 ) {
         FILE *file = fopen("BaggageInfoEzDB.txt", "r");
             if (file == NULL) {
-            printf("Failed to open the file.\n");
+            printf("\t\tFailed to open the file.\n");
         }
 
             // Initialize the database
@@ -41,15 +41,11 @@ void openFile(BaggageTable *myDatabase, FILE *file) {
     } else {
         FILE *file = fopen("BaggageInfoEzDB.txt", "w");
         if (file == NULL) {
-            printf("Could not create file\n");
+            printf("\t\tCould not create file\n");
         }
         fclose(file);
-        printf("No saved database found, creating new .txt database\n");
-        printf("Database created successfully\n");
+        printf("\t\tNo saved database found, creating new .txt database\n");
+        printf("\t\tDatabase created successfully\n");
     }
 }
 
-// int main() {
-//     openFile();
-//     return 0;
-// }

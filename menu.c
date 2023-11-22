@@ -153,13 +153,16 @@ int menu2(BaggageTable *myDatabase){
 // }
 
 // fclose(file);
-
-    printf("  ______     ______     _____     ______               \n");
-    printf(" /\\  ___\\   /\\___  \\   /\\  __-.  /\\  == \\       \n");
-    printf(" \\ \\  __\\   \\/_/  /__  \\ \\ \\/\\ \\ \\ \\  __<   \n");
-    printf("  \\ \\_____\\   /\\_____\\  \\ \\____-  \\ \\_____\\ \n");
-    printf("   \\/_____/   \\/_____/   \\/____/   \\/_____/        \n");
-    printf("                                                       \n");
+    printf("\t\t- - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
+    printf("\t\t                         MAINPAGE                         \n");
+    printf("\t\t- - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
+    printf("\t\t\t  ______     ______     _____     ______               \n");
+    printf("\t\t\t /\\  ___\\   /\\___  \\   /\\  __-.  /\\  -- \\       \n");
+    printf("\t\t\t \\ \\  __\\   \\/_/  /__  \\ \\ \\/\\ \\ \\ \\  __<   \n");
+    printf("\t\t\t  \\ \\_____\\   /\\_____\\  \\ \\____-  \\ \\_____\\ \n");
+    printf("\t\t\t   \\/_____/   \\/_____/   \\/____/   \\/_____/        \n");
+    printf("\t\t                                                       \n");
+    printf("\t\t- - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
 
     char quePasa[9] = {'H', 'E', 'L', 'P', '\0'};
     char ShowWord[9] = {'S', 'H', 'O', 'W','\0'};
@@ -184,9 +187,12 @@ int menu2(BaggageTable *myDatabase){
     char input[100];
 
     do{
-        printf("What would you like to do?\n");
-        printf("Type 'HELP' for more information.\n");
+        printf("\t\t- - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
+        printf("\t\t                 What would you like to do?               \n");
+        printf("\t\t             Type 'HELP' for more information.            \n");
+        printf("\t\t- - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
 
+        printf("\t\t");
         fgets(input, 100, stdin);
         input[strcspn(input, "\n")] = 0; //remove the newline character from fgets
         char *token = strtok(input, " ");;//Get the first token
@@ -194,18 +200,18 @@ int menu2(BaggageTable *myDatabase){
         if (token != NULL) {    // Check if token is NULL before using it
             // Empty Command Input
             if(token == NULL){
-                printf("Syntax Error: Please enter a command!\n");
+                printf("\t\tSyntax Error: Please enter a command!\n");
             }
             // ?
             else if(strcmp(token, quePasa) == 0){
-                printf("HELP     - Show all commands    \n");
-                printf("SHOW ALL - SHOW ALL             \n");
-                printf("INSERT   - INSERT A12345C ANT   \n");
-                printf("QUERY    - QUERY A12345C        \n");
-                printf("UPDATE   - UPDATE A12345C BNT   \n");
-                printf("DELETE   - DELETE A12345C       \n");
-                printf("SAVE     - SAVE 'fileName.txt'  \n");
-                printf("BACK     - BACK                 \n");
+                printf("\t\tHELP\t\t - Show all commands    \n");
+                printf("\t\tSHOW ALL\t - SHOW ALL             \n");
+                printf("\t\tINSERT\t\t - INSERT RFIDValue Location   \n");
+                printf("\t\tQUERY\t\t - QUERY RFIDValue       \n");
+                printf("\t\tUPDATE\t\t - UPDATE RFIDValue Location   \n");
+                printf("\t\tDELETE\t\t - DELETE RFIDValue      \n");
+                printf("\t\tSAVE\t\t - SAVE 'fileName.txt'  \n");
+                printf("\t\tBACK\t\t - GO BACK TO HOMEPAGE                \n");
             }
 
             // INSERT
@@ -221,21 +227,21 @@ int menu2(BaggageTable *myDatabase){
                     insertRecord(myDatabase, tempRFID, tempLocation);
                 }
                 else if(validateRFID(tempRFID) != 0)    {
-                    printf("\n-----------------------------\n");
-                    printf("Syntax Error: ");
+                    printf("\n\t\t-----------------------------\n");
+                    printf("\t\tSyntax Error: ");
                     handleError(validateRFID(tempRFID));
-                    printf("-----------------------------\n");
+                    printf("\t\t-----------------------------\n");
                 }
                 else if(validateAirportName(tempLocation) != 0)    {
-                    printf("\n-----------------------------\n");
-                    printf("Syntax Error: ");
+                    printf("\n\t\t-----------------------------\n");
+                    printf("\t\tSyntax Error: ");
                     handleError(validateAirportName(tempLocation));
-                    printf("-----------------------------\n");
+                    printf("\t\t-----------------------------\n");
                 }
                 else{
-                    printf("\n-----------------------------\n");
-                    printf("Syntax Error: Additional Input Detected!\n");
-                    printf("-----------------------------\n");
+                    printf("\t\t\n-----------------------------\n");
+                    printf("\t\tSyntax Error: Additional Input Detected!\n");
+                    printf("\t\t-----------------------------\n");
                 }
             }
 
@@ -247,22 +253,22 @@ int menu2(BaggageTable *myDatabase){
                 lastWord = token;
 
                 if (secondWord == NULL){
-                    printf("\n-----------------------------\n");
-                    printf("Syntax Error: Did you mean SHOW ALL?\n");
-                    printf("-----------------------------\n");
+                    printf("\n\t\t-----------------------------\n");
+                    printf("\t\tSyntax Error: Did you mean SHOW ALL?\n");
+                    printf("\t\t-----------------------------\n");
                 }
                 else if (strcmp(secondWord, "ALL") == 1){
-                    printf("\n-----------------------------\n");
-                    printf("Syntax Error: Did you mean SHOW ALL?\n");
-                    printf("-----------------------------\n");
+                    printf("\n\t\t-----------------------------\n");
+                    printf("\t\tSyntax Error: Did you mean SHOW ALL?\n");
+                    printf("\t\t-----------------------------\n");
                 }
                 else if(strcmp(secondWord, "ALL") == 0 && lastWord == NULL){
                     showBaggageTable(myDatabase);
                 }
                 else{
-                    printf("\n-----------------------------\n");
-                    printf("Syntax Error: Additional Input Detected!\n");
-                    printf("-----------------------------\n");
+                    printf("\n\t\t-----------------------------\n");
+                    printf("\t\tSyntax Error: Additional Input Detected!\n");
+                    printf("\t\t-----------------------------\n");
                 }
             }
 
@@ -277,15 +283,15 @@ int menu2(BaggageTable *myDatabase){
                     queryTag(myDatabase, tempRFID);
                 }
                 else if (validateRFID(tempRFID) != 0){
-                    printf("\n-----------------------------\n");
-                    printf("Syntax Error: ");
+                    printf("\n\t\t-----------------------------\n");
+                    printf("\t\tSyntax Error: ");
                     handleError(validateRFID(tempRFID));
-                    printf("-----------------------------\n");
+                    printf("\t\t-----------------------------\n");
                 }
                 else{
-                    printf("\n-----------------------------\n");
-                    printf("Syntax Error: Additional Input Detected!\n");
-                    printf("-----------------------------\n");
+                    printf("\n\t\t-----------------------------\n");
+                    printf("\t\tSyntax Error: Additional Input Detected!\n");
+                    printf("\t\t-----------------------------\n");
                 }
             }
 
@@ -302,21 +308,21 @@ int menu2(BaggageTable *myDatabase){
                     updateRow(myDatabase, tempRFID, tempLocation);
                 }
                 else if(validateRFID(tempRFID) != 0)    {
-                    printf("\n-----------------------------\n");
-                    printf("Syntax Error: ");
+                    printf("\n\t\t-----------------------------\n");
+                    printf("\t\tSyntax Error: ");
                     handleError(validateRFID(tempRFID));
-                    printf("-----------------------------\n");
+                    printf("\t\t-----------------------------\n");
                 }
                 else if(validateAirportName(tempLocation) != 0)    {
-                    printf("\n-----------------------------\n");
-                    printf("Syntax Error: ");
+                    printf("\n\t\t-----------------------------\n");
+                    printf("\t\tSyntax Error: ");
                     handleError(validateAirportName(tempLocation));
-                    printf("-----------------------------\n");
+                    printf("\t\t-----------------------------\n");
                 }
                 else{
-                    printf("\n-----------------------------\n");
-                    printf("Syntax Error: Additional Input Detected!\n");
-                    printf("-----------------------------\n");
+                    printf("\n\t\t-----------------------------\n");
+                    printf("\t\tSyntax Error: Additional Input Detected!\n");
+                    printf("\t\t-----------------------------\n");
                 }
             }
 
@@ -331,21 +337,21 @@ int menu2(BaggageTable *myDatabase){
                     deleteRow(myDatabase, tempRFID);
                 }
                 else if (validateRFID(tempRFID) != 0){
-                    printf("\n-----------------------------\n");
-                    printf("Syntax Error: ");
+                    printf("\n\t\t-----------------------------\n");
+                    printf("\t\tSyntax Error: ");
                     handleError(validateRFID(tempRFID));
-                    printf("-----------------------------\n");
+                    printf("\t\t-----------------------------\n");
                 }
                 else{
-                    printf("\n-----------------------------\n");
-                    printf("Syntax Error: Additional Input Detected!\n");
-                    printf("-----------------------------\n");
+                    printf("\n\t\t-----------------------------\n");
+                    printf("\t\tSyntax Error: Additional Input Detected!\n");
+                    printf("\t\t-----------------------------\n");
                 }
             }
 
             //Go back to menu1
             else if(strcmp(token, backWord) == 0){
-                printf("Going back to menu1...\n");
+                printf("\t\tGoing back to menu1...\n");
                 freeBaggageTable(myDatabase);
                 system("cls");
                 menu1();
@@ -356,19 +362,19 @@ int menu2(BaggageTable *myDatabase){
                 token = strtok(NULL, " ");
 
                 if (token != NULL) {
-                    printf("\n-----------------------------\n");
-                    printf("Syntax Error: Additional input detected after SAVE\n");
-                    printf("-----------------------------\n");
+                    printf("\n\t\t-----------------------------\n");
+                    printf("\t\tSyntax Error: Additional input detected after SAVE\n");
+                    printf("\t\t-----------------------------\n");
                 } else {
                     // Proceed to save the BaggageTable
                     saveBaggageTable(myDatabase, "BaggageInfoEzDB.txt");
-                    printf("Save Successful!\n");
+                    printf("\t\tSave Successful!\n");
                 }
             }
 
             // Unrecognized Input
             else{
-                printf("Syntax Error: Unrecognized command %s ...\n", input);
+                printf("\t\tSyntax Error: Unrecognized command %s ...\n", input);
             }
         }
     }while(1);

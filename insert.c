@@ -14,9 +14,9 @@ void insertRecord(BaggageTable *table, const char *RFIDValue, const char *Locati
     Baggage *current = table->table[hash];
     while (current != NULL) {
         if (strcmp(current->RFIDValue, RFIDValue) == 0) {
-            printf("\n-----------------------------\n");
-            printf("Record for RFID %s already found in Database!\n", RFIDValue);
-            printf("-----------------------------\n");
+            printf("\n\t\t-----------------------------\n");
+            printf("\t\tRecord for RFID %s already found in Database!\n", RFIDValue);
+            printf("\t\t-----------------------------\n");
             return;
         }
         current = current->next;
@@ -29,11 +29,11 @@ void insertRecord(BaggageTable *table, const char *RFIDValue, const char *Locati
     newRecord->next = table->table[hash];
     table->table[hash] = newRecord;
 
-    printf("\n-----------------------------\n");
-    printf("Record for RFID %s : %s successfully inserted!\n", RFIDValue, Location);
-    printf("-----------------------------\n");
+    printf("\n\t\t-----------------------------\n");
+    printf("\t\tRecord for RFID %s : %s successfully inserted!\n", RFIDValue, Location);
+    printf("\t\t----------------------------\n");
 
     if (strcmp(RFIDValue, "RFIDValue") == 0) {
-        printf("The record with RFID already exists in the database.\n");
+        printf("\t\tThe record with RFID already exists in the database.\n");
     }
 }

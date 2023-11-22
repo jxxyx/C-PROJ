@@ -47,7 +47,7 @@ int validate_iata_code(const char *user_input) {
     // Load the JSON file
     FILE *file = fopen("IATAairports.json", "rb");
     if (!file) {
-        fprintf(stderr, "Could not open file\n");
+        fprintf(stderr, "\t\tCould not open file\n");
         return 1;
     }
 
@@ -62,7 +62,7 @@ int validate_iata_code(const char *user_input) {
     // Parse the JSON data
     cJSON *json = cJSON_Parse(data);
     if (!json) {
-        fprintf(stderr, "Could not parse JSON\n");
+        fprintf(stderr, "\t\tCould not parse JSON\n");
         free(data);
         return 1;
     }
@@ -80,7 +80,7 @@ int validate_iata_code(const char *user_input) {
     }
 
     // The user's input is not a valid IATA code
-    fprintf(stderr, "Invalid IATA code: %s\n", user_input);
+    fprintf(stderr, "\t\tInvalid IATA code: %s\n", user_input);
     cJSON_Delete(json);
     free(data);
     return 10;
@@ -152,37 +152,37 @@ int validateAirportName(char* Location) {
 void handleError(int errorCode) {
     switch (errorCode) {
         case VALID_INPUT:
-            printf("Input is valid.\n");
+            printf("\t\tInput is valid.\n");
             break;
         case NULL_INPUT:
-            printf("Input is null.\n");
+            printf("\t\tInput is null.\n");
             break;
         case CONTAINS_SPECIAL_CHAR:
-            printf("Input contains special characters.\n");
+            printf("\t\tInput contains special characters.\n");
             break;
         case CONTAINS_LETTER:
-            printf("Input contains letters.\n");
+            printf("\t\tInput contains letters.\n");
             break;
         case EMPTY_STRING:
-            printf("Input is an empty string.\n");
+            printf("\t\tInput is an empty string.\n");
             break;
         case WHITESPACE_ONLY:
-            printf("Input contains only whitespace.\n");
+            printf("\t\tInput contains only whitespace.\n");
             break;
         case INVALID_AIRPORT_NAME_LENGTH:
-            printf("Airport name is of invalid length.\n");
+            printf("\t\tAirport name is of invalid length.\n");
             break;
         case NON_ALPHABETIC_AIRPORT_NAME:
-            printf("Airport name contains non-alphabetic characters.\n");
+            printf("\t\tAirport name contains non-alphabetic characters.\n");
             break;
         case DUPLICATE_KEY:
-            printf("Duplicate key found.\n");
+            printf("\t\tDuplicate key found.\n");
             break;
         case INVALID_AIRLINE_CODE:
-            printf("Invalid airline code.\n");
+            printf("\t\tInvalid airline code.\n");
             break;
         default:
-            printf("An unknown error occurred.\n");
+            printf("\t\tAn unknown error occurred.\n");
             break;
     }
 }

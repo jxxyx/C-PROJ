@@ -53,7 +53,7 @@ void openFile(BaggageTable *myDatabase, FILE *file) {
     if(access("BaggageInfoEzDB.txt", F_OK ) != -1 ) {
         FILE *file = fopen("BaggageInfoEzDB.txt", "r");
             if (file == NULL) {
-            printf("Failed to open the file.\n");
+            printf("\t\tFailed to open the file.\n");
         }
 
             // Initialize the database
@@ -78,11 +78,11 @@ void openFile(BaggageTable *myDatabase, FILE *file) {
     } else {
         FILE *file = fopen("BaggageInfoEzDB.txt", "w");
         if (file == NULL) {
-            printf("Could not create file\n");
+            printf("\t\tCould not create file\n");
         }
         fclose(file);
-        printf("No saved database found, creating new .txt database\n");
-        printf("Database created successfully\n");
+        printf("\t\tNo saved database found, creating new .txt database\n");
+        printf("\t\tDatabase created successfully\n");
     }
 }
 
@@ -92,7 +92,7 @@ void saveBaggageTable(BaggageTable *table, const char *filename) {
     FILE *file = fopen(filename, "w");
 
     if (file == NULL) {
-        printf("Could not open file to save\n");
+        printf("\t\tCould not open file to save\n");
         return;
     }
 
@@ -111,7 +111,7 @@ void saveBaggageTable(BaggageTable *table, const char *filename) {
 void writeTableToFile(BaggageTable *table, const char* filename) {
     FILE *file = fopen(filename, "w");
     if (file == NULL) {
-        printf("Error: Could not open file %s\n", filename);
+        printf("\t\tError: Could not open file %s\n", filename);
         return;
     }
 
@@ -119,11 +119,11 @@ void writeTableToFile(BaggageTable *table, const char* filename) {
         Baggage *current = table->table[i];
         while (current != NULL) {
             if (current->RFIDValue == NULL) {
-                printf("RFIDValue is null\n");
+                printf("\t\tRFIDValue is null\n");
                 return;
             }
             if (current->Location == NULL) {
-                printf("Location is null\n");
+                printf("\t\tLocation is null\n");
                 return;
             }
             fprintf(file, "%s\t%s\n", current->RFIDValue, current->Location);
@@ -137,7 +137,7 @@ void writeTableToFile(BaggageTable *table, const char* filename) {
 void readTableFromFile(BaggageTable *table, const char* filename) {
     FILE *file = fopen(filename, "r");
     if (file == NULL) {
-        printf("Error: Could not open file %s\n", filename);
+        printf("\t\tError: Could not open file %s\n", filename);
         return;
     }
 

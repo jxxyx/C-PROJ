@@ -24,15 +24,15 @@ void deleteRow(BaggageTable *table, const char* RFIDValue) { // Removed Location
             free(current->RFIDValue);
             free(current);
 
-            printf("\n-----------------------------\n");
-            printf("Record RFID %s deleted successfully!\n", RFIDValue); // Deletion successful
-            printf("-----------------------------\n");
+            printf("\n\t\t-----------------------------\n");
+            printf("\t\tRecord RFID %s deleted successfully!\n", RFIDValue); // Deletion successful
+            printf("\t\t-----------------------------\n");
             return; // Exit the function after deletion
         }
         previous = current;
         current = current->next;
     }
-    printf("\n-----------------------------\n");
-    printf("Record RFID %s not found!\n", RFIDValue); // Deletion unsuccessful
-    printf("-----------------------------\n");
+    printf("\t\t\n-----------------------------\n");
+    printf("\t\tRecord RFID %s not found!\n", RFIDValue); // Deletion unsuccessful
+    printf("\t\t-----------------------------\n");
 }
