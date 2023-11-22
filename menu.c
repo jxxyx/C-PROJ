@@ -26,7 +26,7 @@ int menu1 (){
     printf("\t\t*  assessments involved will receive ZERO mark.                                                   *\n");
     printf("\t\t*                                                                                                 *\n");
     printf("\t\t*  We hereby declare that:                                                                        *\n");
-    printf("\t\t*  -  We fully understand and agree to the abovementioned plagiarism policy.                      *\n");
+    printf("\t\t*  -  We fully understand and agree to the above mentioned plagiarism policy.                     *\n");
     printf("\t\t*  -  We did not copy any code from others or from other places.                                  *\n");
     printf("\t\t*  -  We did not share our codes with others or upload to any other places for public access.     *\n");
     printf("\t\t*  -  We agree that our project will receive Zero mark if there is any plagiarism detected.       *\n");
@@ -54,7 +54,7 @@ int menu1 (){
     printf("\t\t|                                 - Type 'HELP' for more information.                              |\n");
     printf("\t\t - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
 
-    BaggageTable *myDatabase = createBaggageTable(2); // Please change this!
+    BaggageTable *myDatabase = createBaggageTable(2); 
 
      while (1) {
         printf("\t\t"); // Adjusted indentation for user input
@@ -103,7 +103,7 @@ int menu1 (){
                 FILE *file = fopen(token, "r");
                 if (file != NULL) {
                     // Create a new BaggageTable and initialize it
-                    myDatabase = createBaggageTable(200);  // Please change this!
+                    myDatabase = createBaggageTable(200); 
 
                     // Open the file using openFile() function from open.c
                     openFile(myDatabase, file);
@@ -112,7 +112,7 @@ int menu1 (){
                     system("cls");
 
                     printf("\r\t\tDatabase initialized successfully!\n");
-                    sleep(1);
+                    sleep(0.5);
 
                     // Go to menu2
                     menu2(myDatabase);
@@ -122,6 +122,8 @@ int menu1 (){
                 }
             } else {
                 printf("\t\tError: Please provide a filename after OPEN\n");
+                printf("\t\t- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
+                printf("\n");
             }
         } else if (token != NULL && strcmp(token, "EXIT") == 0) {
             printf("\n");
@@ -357,7 +359,7 @@ int menu2(BaggageTable *myDatabase){
                         logChange(changeDescription);
                     }
                     else{
-                        printf("Operation cancelled.\n");
+                        printf("\t\tOperation cancelled.\n");
                     }
                 }
                 else if (validateRFID(tempRFID) != 0){

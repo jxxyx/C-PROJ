@@ -20,3 +20,12 @@ Change made at 2023-11-22 22:39:57: Deleted RFID 013
 Change made at 2023-11-22 22:39:57: Deleted RFID 014
 Change made at 2023-11-22 22:39:57: Deleted RFID 015
 Change made at 2023-11-22 22:39:57: Deleted RFID 016
+Change made at 2023-11-22 23:05:09: Added RFID 001 with location OSK
+Change made at 2023-11-22 23:05:09: Added RFID 002 with location ITM
+Change made at 2023-11-22 23:05:09: Added RFID 003 with location JFK
+Change made at 2023-11-22 23:05:09: Added RFID 004 with location HCM
+Change made at 2023-11-22 23:05:09: Added RFID 005 with location ITM
+Change made at 2023-11-22 23:05:09: Added RFID 006 with location ITM
+Change made at 2023-11-22 23:05:09: Updated RFID 005 to location BKK
+Change made at 2023-11-22 23:05:09: Updated RFID 006 to location ALB
+Change made at 2023-11-22 23:05:09: Deleted RFID 006
