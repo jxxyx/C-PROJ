@@ -62,6 +62,11 @@ int menu1 (){
         // Tokenize the input to check the command
         char *token = strtok(input, " ");
 
+        // Convert token to uppercase
+        for(int i = 0; token[i]; i++){
+        token[i] = toupper(token[i]);
+    }
+
         // If user input '?', display possible commands
         if (token != NULL && strcmp(token, "HELP") == 0) {
             //if user input '?', display possible commands
@@ -70,7 +75,7 @@ int menu1 (){
                 printf("\t\tYou have entered: %s\n", input);
                 printf("\t\t- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
                 printf("\t\tPossible commands: \n");
-                printf("\t\tOPEN\t - filename.txt\n");
+                printf("\t\tOPEN\t - <filename>.txt\n");
                 printf("\t\tEXIT\t - Exit Program\n");
                 printf("\t\t- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
         }
@@ -103,6 +108,9 @@ int menu1 (){
 
                     // Clear the console
                     system("cls");
+
+                    printf("\r\t\tDatabase initialized successfully!\n");
+                    sleep(1);
 
                     // Go to menu2
                     menu2(myDatabase);
@@ -197,6 +205,11 @@ int menu2(BaggageTable *myDatabase){
         input[strcspn(input, "\n")] = 0; //remove the newline character from fgets
         char *token = strtok(input, " ");;//Get the first token
 
+        // Convert token to uppercase
+        for(int i = 0; token[i]; i++){
+        token[i] = toupper(token[i]);
+    }
+
         if (token != NULL) {    // Check if token is NULL before using it
             // Empty Command Input
             if(token == NULL){
@@ -251,6 +264,12 @@ int menu2(BaggageTable *myDatabase){
             else if(strcmp(token, ShowWord) == 0){
                 token = strtok(NULL, " ");
                 char* secondWord = token;
+
+                // Convert secondWord to uppercase
+                for(int i = 0; secondWord != NULL && secondWord[i]; i++){
+                secondWord[i] = toupper(secondWord[i]);
+                }
+
                 token = strtok(NULL, " ");
                 lastWord = token;
 
@@ -336,7 +355,22 @@ int menu2(BaggageTable *myDatabase){
                 lastWord = token;
 
                 if(validateRFID(tempRFID) == 0 && lastWord == NULL){
-                    deleteRow(myDatabase, tempRFID);
+                    char confirmation[10];
+                    printf("\t\tAre you sure you want to delete the data? (YES/NO): ");
+                    fgets(confirmation, 10, stdin);
+                    confirmation[strcspn(confirmation, "\n")] = 0; // remove newline character
+
+                    // Convert confirmation to uppercase
+                    for(int i = 0; confirmation[i]; i++){
+                        confirmation[i] = toupper(confirmation[i]);
+                    }
+
+                    if(strcmp(confirmation, "YES") == 0){
+                        deleteRow(myDatabase, tempRFID);
+                    }
+                    else{
+                        printf("Operation cancelled.\n");
+                    }
                 }
                 else if (validateRFID(tempRFID) != 0){
                     printf("\n\t\t-----------------------------\n");
@@ -360,17 +394,32 @@ int menu2(BaggageTable *myDatabase){
                 break;
             }
 
-            else if (strcmp(token, SaveWord) == 0) {
+            // SAVE
+            else if(strcmp(token, SaveWord) == 0){
                 token = strtok(NULL, " ");
-
-                if (token != NULL) {
+                if(token != NULL){
                     printf("\n\t\t-----------------------------\n");
                     printf("\t\tSyntax Error: Additional input detected after SAVE\n");
                     printf("\t\t-----------------------------\n");
-                } else {
-                    // Proceed to save the BaggageTable
-                    saveBaggageTable(myDatabase, "BaggageInfoEzDB.txt");
-                    printf("\t\tSave Successful!\n");
+                }
+                else{
+                    char confirmation[10];
+                    printf("\t\tAre you sure you want to save the data? (YES/NO): ");
+                    fgets(confirmation, 10, stdin);
+                    confirmation[strcspn(confirmation, "\n")] = 0; // remove newline character
+
+                    // Convert confirmation to uppercase
+                    for(int i = 0; confirmation[i]; i++){
+                        confirmation[i] = toupper(confirmation[i]);
+                    }
+
+                    if(strcmp(confirmation, "YES") == 0){
+                        saveBaggageTable(myDatabase, "BaggageInfoEzDB.txt");
+                        printf("\t\tSave Successful!\n");
+                    }
+                    else{
+                        printf("\t\tOperation cancelled.\n");
+                    }
                 }
             }
 
